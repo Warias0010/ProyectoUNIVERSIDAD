@@ -24,7 +24,7 @@ include "../conexion.php";
                 <h4>Datos Del Cliente</h4>
                 <a href="#" class="btn_new btn_new_cliente"><i class="fas fa-plus"></i>Nuevo Cliente</a>
             </div>
-            <form name="form_new_cliente_venta" id="form_new_cliente_venta" class="datos">
+            <form id="form_new_cliente_venta" name="form_new_cliente_venta"  class="datos">
                 <input type="hidden" name="action" value="addCliente">
                 <input type="hidden" id="idcliente" name="idcliente" value="" required>
                 <div class="wd30">
@@ -52,8 +52,8 @@ include "../conexion.php";
             <h4>Datos de ventas</h4>
             <div class="datos">
                 <div class="wd50">
-                    <label>vendedor</label>
-                    <p>Walter Jose Arias Anton</p>
+                    <label>Vendedor</label>
+                    <p><?php echo $_SESSION['nombre'];?></p>
                 </div>
                 <div class="wd50">
                     <label>Acciones</label>

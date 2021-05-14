@@ -39,6 +39,67 @@ $(document).ready(function(){
     	$("#img").remove();
 
     });
+
+    //crear clientes 
+    $('#form_new_cliente_venta').submit(function(e){
+        e.preventDefault();
+        $.ajax({
+            url: 'ajax.php',
+            type:"POST",
+            async: true,
+            data: $('#form_new_cliente_venta').serialize(),
+            success:function(response)
+            {
+                if(response != 'error'){
+                    $('#idcliente').val(response);
+                    //bloqueos de campos ... si se retorna la variable
+                    $('#nom_cliente').attr('disabled','disabled');
+                    $('#tel_cliente').attr('disabled','disabled');
+                    $('#dir_cliente').attr('disabled','disabled');
+
+                    //ocultar botones
+                    $('btn_new_cliente').slideUp();
+
+                    //ocultar agregar
+                    $('#div_registro_cliente').slideUp();
+                }
+        
+            },
+            error: function(error){
+        
+            }
+        });
+    });
+     //crear clientes -Modu
+    $('#form_new_cliente_venta').submit(function(e){
+        e.preventDefault();
+        $.ajax({
+            url: 'ajax.php',
+            type:"POST",
+            async: true,
+            data: $('#form_new_cliente_venta').serialize(),
+            success:function(response)
+            {
+                if(response != 'error'){
+                    $('#idcliente').val(response);
+                    //bloqueos de campos ... si se retorna la variable
+                    $('#nom_cliente').attr('disabled','disabled');
+                    $('#tel_cliente').attr('disabled','disabled');
+                    $('#dir_cliente').attr('disabled','disabled');
+
+                    //ocultar botones
+                    $('btn_new_cliente').slideUp();
+
+                    //ocultar agregar
+                    $('#div_registro_cliente').slideUp();
+                }
+        
+            },
+            error: function(error){
+        
+            }
+        });
+    });
     //evento Bucar cliente
     $('#nit_cliente').keyup(function(e){
      e.preventDefault();
@@ -91,11 +152,5 @@ $('.btn_new_cliente').click(function(e){
     $('#dir_cliente').removeAttr('disabled');
 
     $('#div_registro_cliente').slideDown();
-});
-
-//Crear clientes desde El modulo factura
-$('#form_new_cliente_venta').submit(function(e){
-e.preventDefault();
-
-});
+  });
 });
