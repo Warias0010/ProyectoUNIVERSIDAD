@@ -82,19 +82,7 @@
 				<label for="precio">Precio</label>
 				<input type="number" name="precio"id="precio" placeholder="Precio del Producto">
 				<label for="cantidad">Cantidad</label>
-				<input type="number" name="cantidad" id="cantidad" placeholder="Cantidad del Producto">
-				<div class="photo">
-					<label for="foto">Foto</label>
-			        <div class="prevPhoto">
-			        <span class="delPhoto notBlock">X</span>
-			        <label for="foto"></label>
-			        </div>
-			        <div class="upimg">
-			        <input type="file" name="foto" id="foto">
-			        </div>
-			        <div id="form_alert"></div>
-			</div>
-				
+				<input type="number" name="cantidad" id="cantidad" placeholder="Cantidad del Producto">				
 				<input type="submit" value="Guardar Producto" class="btn_save">
 
 			</form>
