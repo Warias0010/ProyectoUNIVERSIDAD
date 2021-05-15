@@ -1,6 +1,24 @@
 <?php
 session_start();
 include "../conexion.php";	
+// Informacion Productos
+if($_POST['action'] == 'infoProducto')
+{
+$producto_id = $_POST['producto'];
+ $query = mysqli_query($conection," SELECT codproducto, descripcion, existencia, precio FROM producto 
+                                            WHERE codproducto = $producto_id AND estatus= 1");
+mysqli_close($conection);
+$result= mysqli_num_rows($query);
+ if($result>0){
+     $data = mysqli_fetch_assoc($query);
+     echo json_encode($data,JSON_UNESCAPED_UNICODE);
+     exit;
+ }
+ echo 'error';
+ exit;
+ }
+
+
 //registro cliente - Modulo Venta
 if($_POST['action'] == 'addCliente')
 {

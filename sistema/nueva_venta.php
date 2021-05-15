@@ -79,9 +79,9 @@ include "../conexion.php";
         <td><input type="text" name="txt_cod_producto" id="txt_cod_producto" ></td>
         <td id="txt_descripcion">-</td>
         <td id="txt_existencia">-</td>
-        <td><input type="text" name="txt_cant_producto" id="txt_cant_prodcuto" value="0" min="1" disabled></td>
+        <td><input type="number" name="txt_cant_producto" id="txt_cant_producto" value="0" min="1" required ></td>
         <td id="txt_precio" class="textright">0.00</td>
-        <td id="precio_total" class="textright">0.00</td>
+        <td id="txt_precio_total" class="textright">0.00</td>
         <td><a href="#" id="add_product_venta" class="link_add">Agregar</a></td>
         </tr>
         <tr>
