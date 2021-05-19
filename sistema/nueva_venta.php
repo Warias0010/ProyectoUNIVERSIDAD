@@ -95,29 +95,22 @@ include "../conexion.php";
         </thead>
         <tbody id="detalle_venta">
         <tr>
-        <td>1</td>
-        <td colspan="2">Ropero Tres Cuerpo</td>
-        <td class="textright">1</td>
-        <td class="textright">100.00</td>
-        <td class="textright">100.00</td>
-        <td class="">
-        <a class="link_delete" href="#" onclick="event.preventDefault(); del_producto_detalle(1);"><i class="far fa-trash-alt"></i>Eliminar</a> 
-        </td>
+        <!--Contenido AJAX WJDEVELOPER -->
         </tr>
         </tbody>
-        <tfoot>
-        <tr>
-        <td colspan="5" class="textright">SubTotol C$.</td>
-        <td class="textright">100.00</td>
-        </tr>
-        <tr>
-        <td colspan="5" class="textright"> Total C$.</td>
-        <td class="textright">100.00</td>
-        </tr>
+        <tfoot id="detalle_totales">
+         <!--Contenido AJAX WJDEVELOPER -->
         </tfoot>
         </table>
     </section>
     <?php include "includes/footer.php"; ?>
+    <script>
+    $(document).ready(function(){
+        var usuarioid = '<?php echo $_SESSION['idUser'] ?>';
+        searchForDetalle(usuarioid);
+    });
+     </script>
+
 </body>
 
 </html>

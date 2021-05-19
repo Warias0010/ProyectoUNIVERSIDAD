@@ -1,43 +1,48 @@
 $(document).ready(function(){
 
-    //--------------------- SELECCIONAR FOTO PRODUCTO ---------------------
-    $("#foto").on("change",function(){
-    	var uploadFoto = document.getElementById("foto").value;
-        var foto       = document.getElementById("foto").files;
-        var nav = window.URL || window.webkitURL;
-        var contactAlert = document.getElementById('form_alert');
-        
-            if(uploadFoto !='')
-            {
-                var type = foto[0].type;
-                var name = foto[0].name;
-                if(type != 'image/jpeg' && type != 'image/jpg' && type != 'image/png')
-                {
-                    contactAlert.innerHTML = '<p class="errorArchivo">El archivo no es válido.</p>';                        
-                    $("#img").remove();
-                    $(".delPhoto").addClass('notBlock');
-                    $('#foto').val('');
-                    return false;
-                }else{  
-                        contactAlert.innerHTML='';
-                        $("#img").remove();
-                        $(".delPhoto").removeClass('notBlock');
-                        var objeto_url = nav.createObjectURL(this.files[0]);
-                        $(".prevPhoto").append("<img id='img' src="+objeto_url+">");
-                        $(".upimg label").remove();
-                        
-                    }
-              }else{
-              	alert("No selecciono foto");
-                $("#img").remove();
-              }              
-    });
+    //agregar producto al detalle de factura
+    
+    $('#add_product_venta').click(function(e){
+        e.preventDefault();
+        if($('#txt_cant_producto').val() > 0){
+            var codproducto = $('#txt_cod_producto').val();
+            var cantidad = $('#txt_cant_producto').val();
+            var action = 'addProductoDetalle';
+            $.ajax({
+                url : 'ajax.php',
+                type : "POST",
+                async: true,
+                data: {action:action,producto:codproducto,cantidad:cantidad},
+                success: function(response){
+                   // console.log(info);
+                   if(response!= 'error'){
+                    var info = JSON.parse(response);
+                    // console.log(info);
+                     $('#detalle_venta').html(info.detalle);
+                     $('#detalle_totales').html(info.totales)
+ 
+                     $('#txt_cod_producto').val('');
+                     $('#txt_descripcion').html('-');
+                     $('#txt_existencia').html('-');
+                     $('#txt_cant_producto').val('0')
+                     $('#txt_precio').html('0.00');
+                     $('#txt_precio_total').html('0.00');
+ 
+                     //bloque de campos
+                     $('#txt_cant_producto').attr('disabled','disabled');
+ 
+                     //bloque de funcion agregar 
+                     $('#add_product_venta').slideup();
+                }else{
+                    console.log('contacta con Teams de desarrollador');
+                }     
+                },
+                error: function(error){
 
-    $('.delPhoto').click(function(){
-    	$('#foto').val('');
-    	$(".delPhoto").addClass('notBlock');
-    	$("#img").remove();
+                }
 
+            });
+        }
     });
 
     //Buscar producto
@@ -239,3 +244,35 @@ $('.btn_new_cliente').click(function(e){
     $('#div_registro_cliente').slideDown();
   });
 });
+
+//cuando se recargue la pagina buscar sis tiene fac no realizada
+function searchForDetalle(id){
+    var action= 'searchForDetalle';
+    var user= id;
+
+    $.ajax({
+        url : 'ajax.php',
+        type : "POST",
+        async: true,
+        data: {action:action,user:user},
+        success: function(response){
+         // console.log(response);
+         if(response!= 'error'){
+            var info = JSON.parse(response);
+            // console.log(info);
+             $('#detalle_venta').html(info.detalle);
+             $('#detalle_totales').html(info.totales)
+             //bloque de campos
+             $('#txt_cant_producto').attr('disabled','disabled');
+
+        }else{
+            console.log('contacta con Teams de desarrollador');
+        }     
+        },
+        error: function(error){
+
+        }
+
+    });
+
+}
