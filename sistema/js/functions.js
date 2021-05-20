@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
-    //agregar producto al detalle de factura
-    
+    //agregar producto al detalle temporal
     $('#add_product_venta').click(function(e){
         e.preventDefault();
         if($('#txt_cant_producto').val() > 0){
@@ -13,18 +12,18 @@ $(document).ready(function(){
                 type : "POST",
                 async: true,
                 data: {action:action,producto:codproducto,cantidad:cantidad},
+
                 success: function(response){
-                   // console.log(info);
                    if(response!= 'error'){
                     var info = JSON.parse(response);
-                    // console.log(info);
+                  //  console.log(info);
                      $('#detalle_venta').html(info.detalle);
-                     $('#detalle_totales').html(info.totales)
+                     $('#detalle_totales').html(info.totales);
  
                      $('#txt_cod_producto').val('');
                      $('#txt_descripcion').html('-');
                      $('#txt_existencia').html('-');
-                     $('#txt_cant_producto').val('0')
+                     $('#txt_cant_producto').val('0');
                      $('#txt_precio').html('0.00');
                      $('#txt_precio_total').html('0.00');
  
@@ -32,9 +31,9 @@ $(document).ready(function(){
                      $('#txt_cant_producto').attr('disabled','disabled');
  
                      //bloque de funcion agregar 
-                     $('#add_product_venta').slideup();
+                     $('#add_product_venta').slideUp();
                 }else{
-                    console.log('contacta con Teams de desarrollador');
+                    console.log('no data');
                 }     
                 },
                 error: function(error){
@@ -48,7 +47,6 @@ $(document).ready(function(){
     //Buscar producto
     $('#txt_cod_producto').keyup(function(e){
         e.preventDefault();
-
         var producto = $(this).val();
         var action = 'infoProducto';
         if(producto != '') {
@@ -81,7 +79,7 @@ $(document).ready(function(){
                 
 
                 //bloquear cantidad
-                $('#txt_cant_producto').Attr('disabled','disabled')
+                $('#txt_cant_producto').Attr('disabled','disabled');
 
                 //ocultar boton agregar 
                 $('#add_product_venta').slideup(); 
@@ -93,20 +91,21 @@ $(document).ready(function(){
         });
       }
      });
-     //agregar producto al detalle
+     //agregar producto al detalle temporal 
      $('#add_product_venta').click(function(e){
          e.preventDefault();
          if($('#txt_cant_productos').val()>0){
              var codproducto = $('#txt_cod_producto').val();
             var cantidad = $('#txt_cant_producto').val();
-            var codproducto = $('addProductoDetalle').val();
+            var action = 'addProductoDetalle';
 
             $.ajax({
                 url: 'ajax.php',
                 type:"POST",
                 async: true,
-                data: {action:action,producto:producto,cantidad:cantidad},
+                data: {action:action,producto:codproducto,cantidad:cantidad},
                 success: function(response){
+
                     console.log(response);
                 },
                 error: function(error){
@@ -130,6 +129,7 @@ $(document).ready(function(){
              $('#add_product_venta').slideDown();
          }
      });
+
     //crear clientes 
     $('#form_new_cliente_venta').submit(function(e){
         e.preventDefault();
@@ -234,8 +234,8 @@ $(document).ready(function(){
          }
      });
     });
-//activa campo para registrar nuevos clientes
-$('.btn_new_cliente').click(function(e){
+ //activa campo para registrar nuevos clientes
+ $('.btn_new_cliente').click(function(e){
     e.preventDefault();
     $('#nom_cliente').removeAttr('disabled');
     $('#tel_cliente').removeAttr('disabled');
@@ -243,9 +243,52 @@ $('.btn_new_cliente').click(function(e){
 
     $('#div_registro_cliente').slideDown();
   });
-});
+});//termina el and ready
 
-//cuando se recargue la pagina buscar sis tiene fac no realizada
+
+////---- Funciones diferente WJDEVELOPER
+function del_product_detalle(correlativo){
+    var action= 'del_product_detalle';
+    var id_detalle= correlativo;
+
+    $.ajax({
+        url : 'ajax.php',
+        type : "POST",
+        async: true,
+        data: {action:action,id_detalle:id_detalle},
+        success: function(response){
+         // console.log(response);
+         if(response!= 'error'){
+
+             var info = JSON.parse(response)
+                    // console.log(info);
+                     $('#detalle_venta').html(info.detalle);
+                     $('#detalle_totales').html(info.totales)
+ 
+                     $('#txt_cod_producto').val('');
+                     $('#txt_descripcion').html('-');
+                     $('#txt_existencia').html('-');
+                     $('#txt_cant_producto').val('0')
+                     $('#txt_precio').html('0.00');
+                     $('#txt_precio_total').html('0.00');
+ 
+                     //bloque de campos
+                     $('#txt_cant_producto').attr('disabled','disabled');
+ 
+                     //bloque de funcion agregar 
+                     $('#add_product_venta').slideup();
+
+        }else{
+            $('#detalle_venta').html('');
+            $('#detalle_totales');
+        }     
+        },
+        error: function(error){
+        }
+    });
+}
+
+//cuando se recargue la pagina buscar si tiene fac no realizada
 function searchForDetalle(id){
     var action= 'searchForDetalle';
     var user= id;
@@ -270,9 +313,7 @@ function searchForDetalle(id){
         }     
         },
         error: function(error){
-
         }
-
     });
 
 }

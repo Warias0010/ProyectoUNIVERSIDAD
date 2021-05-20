@@ -2,10 +2,79 @@
 session_start();
 include "../conexion.php";
 
-//extrae datos del detalle temp
+//Esto es para elimarproducto de detalle
+if($_POST['action'] == 'del_product_detalle'){
+    if(empty($_POST['id_detalle'])){
+        echo 'error';
+    }
+    else{
+       $id_detalle= $_POST ['id_detalle'];
+        $token = md5($_SESSION['idUser']);
+ 
+        //llama al procemiento almacenado para elimanar del detalle
+        $query_detalle_temp = mysqli_query($conection,"CALL del_detalle_temp($id_detalle,'$token')");
+        $result= mysqli_num_rows($query_detalle_temp);
+
+
+        $detalleTabla = '';
+        $sub_total = 0;
+        $total =0;
+        $iva =0;
+        $arrayData= array();
+        if($result > 0){  
+          while($data=mysqli_fetch_assoc($query_detalle_temp)) {
+              $precioTotal = round($data['cantidad']* $data['precio_venta'],2);
+              $sub_total = round($sub_total + $precioTotal,2);
+              $total = round($total+ $precioTotal,2);
+              $detalleTabla .= '
+              <tr>
+              <td>'.$data['codproducto'].'</td>
+              <td colspan="2">'.$data['descripcion'].'</td>
+              <td class="textright">'.$data['cantidad'].'</td>
+              <td class="textright">'.$data['precio_venta'].'</td>
+              <td class="textright">'.$precioTotal.'</td>
+              <td class="">
+              <a class="link_delete" href="#" onclick="event.preventDefault(); del_product_detalle('.$data['correlativo'].');"><i class="far fa-trash-alt"></i>Eliminar</a> 
+              </td>
+              </tr>
+              ';
+        }
+ 
+        $impuesto = round($sub_total*($iva/100),2);
+        $tl_sniva= round($sub_total+$impuesto,2);
+         $total = round($tl_sniva+$impuesto,2);
+          $detalleTotales = '
+         <tr>
+         <td colspan="5" class="textright">SubTotal C$.</td>
+         <td class="textright">'. $tl_sniva.'</td>
+         </tr>
+         <tr>
+         <td colspan="5" class="textright">IVA C$.</td>
+         <td class="textright">N/A</td>
+         </tr>
+         <tr>
+         <td colspan="5" class="textright"> Total C$.</td>
+         <td class="textright">'.$total.'</td>
+         </tr>
+         
+          ';
+ 
+          $arrayData['detalle'] = $detalleTabla;
+          $arrayData['totales']= $detalleTotales;
+ 
+          echo json_encode($arrayData,JSON_UNESCAPED_UNICODE);
+         }else
+         {
+            echo 'error';
+         }
+         mysqli_close($conection);
+    }
+    exit;
+}
+
+//extrae datos del detalle temp 
 if($_POST['action'] == 'searchForDetalle')
 {
-   // print_r($_POST); esto comprueba los valores del metodo post
    if(empty($_POST['user'])){
        echo 'error';
    }
@@ -13,8 +82,8 @@ if($_POST['action'] == 'searchForDetalle')
       
        $token = md5($_SESSION['idUser']);
 
-       $query = mysqli_query($conection,"Select tmp.correlativo,tmp.token_user,tmp.cantidad,tmp.precio_venta,p.codproducto,p.descripcion FROM  detalle_temp tmp 
-                                         INNER JOIN producto p ON tmp.codproducto = p.codproducto WHERE token_user='$token'");
+       $query = mysqli_query($conection,"SELECT tmp.correlativo,tmp.token_user,tmp.cantidad,tmp.precio_venta,p.codproducto,p.descripcion FROM  detalle_temp tmp 
+                                         INNER JOIN producto p ON tmp.codproducto = p.codproducto WHERE token_user='$token' ");
 
        $result =mysqli_num_rows($query);
       
@@ -37,15 +106,15 @@ if($_POST['action'] == 'searchForDetalle')
              <td class="textright">'.$data['precio_venta'].'</td>
              <td class="textright">'.$precioTotal.'</td>
              <td class="">
-             <a class="link_delete" href="#" onclick="event.preventDefault(); del_producto_detalle('.$data['codproducto'].');"><i class="far fa-trash-alt"></i>Eliminar</a> 
+             <a class="link_delete" href="#" onclick="event.preventDefault(); del_product_detalle('.$data['correlativo'].');"><i class="far fa-trash-alt"></i>Eliminar</a> 
              </td>
              </tr>
              ';
        }
 
        $impuesto = round($sub_total*($iva/100),2);
-       $tl_sniva= round($sub_total+$impuesto);
-        $total = round($tl_sniva+$impuesto);
+       $tl_sniva= round($sub_total+$impuesto,2);
+        $total = round($tl_sniva+$impuesto,2);
          $detalleTotales = '
         <tr>
         <td colspan="5" class="textright">SubTotal C$.</td>
@@ -75,10 +144,10 @@ if($_POST['action'] == 'searchForDetalle')
    exit;
 }
 
-//agreggar producto al detalle de factura
+//agreggar producto al detalle de temporal
 if($_POST['action'] == 'addProductoDetalle')
 {
-   // print_r($_POST); esto comprueba los valores del metodo post
+    //print_r($_POST);// esto comprueba los valores del metodo post
    if(empty($_POST['producto']) || empty($_POST['cantidad'])){
        echo 'error';
    }
@@ -87,19 +156,21 @@ if($_POST['action'] == 'addProductoDetalle')
        $cantidad = $_POST['cantidad'];
        $token = md5($_SESSION['idUser']);
 
-       $query_detalle_temp= mysqli_query($conection,"CALL add_detalle_temp($codproducto,$cantidad,'$token')");
+       $query_detalle_temp = mysqli_query($conection,"CALL add_detalle_temp($codproducto,$cantidad,'$token')");
        $result =mysqli_num_rows($query_detalle_temp);
       
 
        $detalleTabla = '';
        $sub_total = 0;
        $total =0;
+       $iva=0;
        $arrayData= array();
        if($result > 0){  
          while($data=mysqli_fetch_assoc($query_detalle_temp)) {
-             $precioTotal = round($data['cantidad']* $data['precio_venta'],2);
-             $sub_total = round($sub_total + $precioTotal,2);
-             $total = round($total+ $precioTotal,2);
+             $precioTotal = round($data['cantidad']* $data['precio_venta'], 2);
+             $sub_total = round($sub_total + $precioTotal, 2);
+             $total = round($total+ $precioTotal, 2);
+
              $detalleTabla .= '
              <tr>
              <td>'.$data['codproducto'].'</td>
@@ -108,28 +179,35 @@ if($_POST['action'] == 'addProductoDetalle')
              <td class="textright">'.$data['precio_venta'].'</td>
              <td class="textright">'.$precioTotal.'</td>
              <td class="">
-             <a class="link_delete" href="#" onclick="event.preventDefault(); del_producto_detalle('.$data['codproducto'].');"><i class="far fa-trash-alt"></i>Eliminar</a> 
+             <a class="link_delete" href="#" onclick="event.preventDefault(); del_product_detalle('.$data['correlativo'].');"><i class="far fa-trash-alt"></i>Eliminar</a> 
              </td>
              </tr>
              ';
        }
-         $tl_s= round($tl_s,2);
-         $total = round($total+ $tl_s,2);
+       $impuesto = round($sub_total*($iva/100),2);
+       $tl_sniva= round($sub_total+$impuesto,2);
+        $total = round($tl_sniva+$impuesto,2);
          $detalleTotales = '
         <tr>
         <td colspan="5" class="textright">SubTotal C$.</td>
-        <td class="textright">'.$tl_s.'</td>
+        <td class="textright">'. $tl_sniva.'</td>
+        </tr>
+        <tr>
+        <td colspan="5" class="textright">IVA C$.</td>
+        <td class="textright">N/A</td>
         </tr>
         <tr>
         <td colspan="5" class="textright"> Total C$.</td>
         <td class="textright">'.$total.'</td>
         </tr>
+        
          ';
 
          $arrayData['detalle'] = $detalleTabla;
          $arrayData['totales']= $detalleTotales;
 
          echo json_encode($arrayData,JSON_UNESCAPED_UNICODE);
+         
         }else
         {
            echo 'error';
