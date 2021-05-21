@@ -491,7 +491,7 @@ table td{
 .textleft{
 	text-align: left;
 }
-.btn_anular{
+.btn_factura{
 	background-color: #f36a6a;
 	border: 0;
 	border-radius: 5px;
@@ -499,4 +499,5 @@ table td{
 	padding: 10px;
 	margin: 0 3px;
 	color: #FFF;
+	
 }

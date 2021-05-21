@@ -50,19 +50,26 @@ include "../conexion.php";
         </div>
         <div class="datos_venta">
             <h4>Datos de ventas</h4>
+
             <div class="datos">
-                <div class="wd50">
-                    <label>Vendedor</label>
-                    <p><?php echo $_SESSION['nombre'];?></p>
+            <p>Nicaragua, <?php echo fechaC(); ?></p>
+            <div class="wd50">
+                    <label>Codigo Vendedor :</label>
+                    <p class="textright"><?php echo $_SESSION['idUser'];?></p>
+                </div>
+                <div class="wd30">
+                    <label>Nombre :</label>
+                    <p ><?php echo $_SESSION['nombre'];?></p>
                 </div>
                 <div class="wd50">
                     <label>Acciones</label>
-                    <div id="acciones_venta">
+                    <div >
                         <a href="#" class="btn_ok textcenter" id="btn_anular_venta"><i class="fas fa-ban"></i>Anular</a>
-                        <a href="#" class="btn_new textcenter" id="btn_facturar_venta"><i class="fas fa-ban"></i>Generar Factura</a>
+                        <a href="#" class="btn_factura textcenter" id="btn_facturar_venta"><i class="fas fa-ban"></i>Generar Factura</a>
                     </div>
                 </div>
             </div>
+            
         </div>
         <table class="tbl_venta">
         <thead>

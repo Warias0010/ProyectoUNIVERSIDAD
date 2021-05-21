@@ -2,6 +2,23 @@
 session_start();
 include "../conexion.php";
 
+
+//anula la venta que esta en el detalle
+if($_POST['action'] == 'anularVenta'){
+
+    $token = md5($_SESSION['idUser']);
+    
+    $query_del= mysqli_query($conection, "DELETE FROM detalle_temp WHERE toker_user ='$token' ");
+    mysqli_close($conection);
+    if($query_del){
+        echo 'ok';
+    }else{
+        echo 'error';
+    }
+    exit;
+}
+
+
 //Esto es para elimarproducto de detalle
 if($_POST['action'] == 'del_product_detalle'){
     if(empty($_POST['id_detalle'])){
@@ -162,8 +179,8 @@ if($_POST['action'] == 'addProductoDetalle')
 
        $detalleTabla = '';
        $sub_total = 0;
-       $total =0;
-       $iva=0;
+       $total = 0;
+       $iva= 0;
        $arrayData= array();
        if($result > 0){  
          while($data=mysqli_fetch_assoc($query_detalle_temp)) {
@@ -184,13 +201,14 @@ if($_POST['action'] == 'addProductoDetalle')
              </tr>
              ';
        }
+       $impuesto =0;
        $impuesto = round($sub_total*($iva/100),2);
        $tl_sniva= round($sub_total+$impuesto,2);
         $total = round($tl_sniva+$impuesto,2);
          $detalleTotales = '
         <tr>
         <td colspan="5" class="textright">SubTotal C$.</td>
-        <td class="textright">'. $tl_sniva.'</td>
+        <td class="textright">'.$tl_sniva.'</td>
         </tr>
         <tr>
         <td colspan="5" class="textright">IVA C$.</td>

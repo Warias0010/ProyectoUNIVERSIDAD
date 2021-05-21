@@ -1,5 +1,4 @@
 $(document).ready(function(){
-
     //agregar producto al detalle temporal
     $('#add_product_venta').click(function(e){
         e.preventDefault();
@@ -32,9 +31,10 @@ $(document).ready(function(){
  
                      //bloque de funcion agregar 
                      $('#add_product_venta').slideUp();
-                }else{
-                    console.log('no data');
-                }     
+                      }else{
+                      console.log('no data');
+                       window.alert("Favor Ingresar el Codigo del Producto!");
+                    }  
                 },
                 error: function(error){
 
@@ -42,6 +42,7 @@ $(document).ready(function(){
 
             });
         }
+          
     });
 
     //Buscar producto
@@ -111,6 +112,7 @@ $(document).ready(function(){
                 error: function(error){
                     
                 }
+               
             });
 
          }
@@ -261,6 +263,7 @@ function del_product_detalle(correlativo){
          if(response!= 'error'){
 
              var info = JSON.parse(response)
+             {  
                     // console.log(info);
                      $('#detalle_venta').html(info.detalle);
                      $('#detalle_totales').html(info.totales)
@@ -277,17 +280,29 @@ function del_product_detalle(correlativo){
  
                      //bloque de funcion agregar 
                      $('#add_product_venta').slideup();
+                    }
+                    
 
         }else{
             $('#detalle_venta').html('');
-            $('#detalle_totales');
-        }     
+            $('#detalle_totales').html('');
+        } 
+        viewProcesar();    
         },
         error: function(error){
         }
     });
 }
 
+//ocultar el boton procesar en factura
+function viewProcesar(){
+    if($('#detalle_venta tr').lenght > 0){
+        $('#btn_facturar_venta').show();
+    }else{
+        $('#btn_facturar_venta').hide();
+
+    }
+}
 //cuando se recargue la pagina buscar si tiene fac no realizada
 function searchForDetalle(id){
     var action= 'searchForDetalle';
@@ -310,10 +325,10 @@ function searchForDetalle(id){
 
         }else{
             console.log('contacta con Teams de desarrollador');
-        }     
+        } 
+       
         },
         error: function(error){
         }
     });
-
 }

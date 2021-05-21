@@ -7,7 +7,7 @@
 <head>
 	<meta charset="UTF-8">
 	<?php include "includes/scripts.php"; ?>
-	<title>Sisteme Ventas</title>
+	<title>Sisteme de Facturacion e Inventario</title>
 </head>
 <body>
 	<?php include "includes/header.php"; ?>
