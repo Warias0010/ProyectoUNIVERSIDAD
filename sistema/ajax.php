@@ -2,13 +2,12 @@
 session_start();
 include "../conexion.php";
 
-
 //anula la venta que esta en el detalle
 if($_POST['action'] == 'anularVenta'){
 
     $token = md5($_SESSION['idUser']);
     
-    $query_del= mysqli_query($conection, "DELETE FROM detalle_temp WHERE toker_user ='$token' ");
+    $query_del= mysqli_query($conection, "DELETE FROM detalle_temp WHERE token_user ='$token' ");
     mysqli_close($conection);
     if($query_del){
         echo 'ok';
@@ -40,6 +39,7 @@ if($_POST['action'] == 'del_product_detalle'){
         $arrayData= array();
         if($result > 0){  
           while($data=mysqli_fetch_assoc($query_detalle_temp)) {
+              
               $precioTotal = round($data['cantidad']* $data['precio_venta'],2);
               $sub_total = round($sub_total + $precioTotal,2);
               $total = round($total+ $precioTotal,2);
@@ -164,7 +164,6 @@ if($_POST['action'] == 'searchForDetalle')
 //agreggar producto al detalle de temporal
 if($_POST['action'] == 'addProductoDetalle')
 {
-    //print_r($_POST);// esto comprueba los valores del metodo post
    if(empty($_POST['producto']) || empty($_POST['cantidad'])){
        echo 'error';
    }
@@ -235,15 +234,16 @@ if($_POST['action'] == 'addProductoDetalle')
    exit;
 }
 
-// Informacion Productos
+// extrae datos del producto
 if($_POST['action'] == 'infoProducto')
 {
-$producto_id = $_POST['producto'];
+
+ $producto_id = $_POST['producto'];
  $query = mysqli_query($conection," SELECT codproducto, descripcion, existencia, precio FROM producto 
                                             WHERE codproducto = $producto_id AND estatus= 1");
 mysqli_close($conection);
 $result= mysqli_num_rows($query);
- if($result>0){
+ if($result > 0){
      $data = mysqli_fetch_assoc($query);
      echo json_encode($data,JSON_UNESCAPED_UNICODE);
      exit;
@@ -264,8 +264,7 @@ if($_POST['action'] == 'addCliente')
 
  $query_insert = mysqli_query($conection,"INSERT INTO cliente(nit,nombre,telefono,direccion,usuario_id)
                    VALUES('$nit','$nombre','$telefono','$direccion','$usuario_id')");
-
-
+mysqli_close($conection);
 if($query_insert){
     $codCliente = mysqli_insert_id($conection);
     $msg= $codCliente;
@@ -273,7 +272,7 @@ if($query_insert){
 }else{
     $msg ='error';
 }
-mysqli_close($conection);
+//mysqli_close($conection);
 echo $msg;
 exit;
 }
