@@ -16,8 +16,10 @@ $(document).ready(function(){
                      success: function(response)
                      {   
                      if(response != 'error'){
-                        //var info = JSON.parse(response);
+                        var info = JSON.parse(response);
                         //console.log(info);
+
+                        generarPDF(info.codcliente,info.nofactura);
                        location.reload();
                      }
             },
@@ -306,7 +308,17 @@ $(document).ready(function(){
     $('#div_registro_cliente').slideDown();
   });
 });//termina el and ready
+//genera PDF
+function generarPDF(cliente,factura){
+    var ancho = 1000;
+    var alto =800;
+    //calcular posicion x,y para centrar la pagina
+    var x = parseInt((window.screen.width/2) - (ancho/2));
+    var y = parseInt((window.screen.height/2) - (alto/2));
 
+    $url = 'factura/generaFactura.php?cl='+cliente +'&f='+factura;
+    window.open($url,"Factura","left="+x+",top="+y+",height="+alto+",width"+ancho+",scrollbar=si,location=no,resizable=si,menubar=no");
+}
 
 ////---- Funciones diferente WJDEVELOPER
 function del_product_detalle(correlativo){

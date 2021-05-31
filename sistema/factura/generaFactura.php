@@ -1,4 +1,5 @@
 <?php
+
 	//print_r($_REQUEST);
 	//exit;
 	//echo base64_encode('2');
@@ -21,11 +22,11 @@
 		$noFactura = $_REQUEST['f'];
 		$anulada = '';
 
-		$query_config   = mysqli_query($conection,"SELECT * FROM configuracion");
+	/*	$query_config   = mysqli_query($conection,"SELECT * FROM configuracion");
 		$result_config  = mysqli_num_rows($query_config);
 		if($result_config > 0){
 			$configuracion = mysqli_fetch_assoc($query_config);
-		}
+		}*/
 
 
 		$query = mysqli_query($conection,"SELECT f.nofactura, DATE_FORMAT(f.fecha, '%d/%m/%Y') as fecha, DATE_FORMAT(f.fecha,'%H:%i:%s') as  hora, f.codcliente, f.estatus,
