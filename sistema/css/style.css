@@ -267,6 +267,7 @@ table td{
 	color: #f26b6b;
 }
 .data_delete{
+	margin: 20px;
 	text-align: center;
 }
 .data_delete h2{
@@ -499,6 +500,72 @@ table td{
 	padding: 10px;
 	margin: 0 3px;
 	color: #FFF;
-	
+}
+
+.form_search_date{
+	border-bottom: 10px;
+	padding: 10px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	border-radius: 10px;
+	margin: 15px auto;
+}
+.form_search_date label{
+	margin: 0 10px;
+}
+.form_search_date input{
+	width: auto;
+}
+.form_search_date .btn_view{
+	padding: 8px;
+}
+.btn_view{
+	background-color: #1faac8;
+	border-radius: 5px;
+	cursor:pointer;
+	padding: 10px;
+	margin: 0 3px;
+	color: #fff;
+}
+.btn_anular{
+	background-color: #f36a6a;
+	border-radius: 5px;
+	cursor:pointer;
+	padding: 10px;
+	margin: 0 3px;
+	color: #fff;
+}
+.div_acciones{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: center;
+}
+.totalfactura{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-between;
+}
+.pagada, .anulada{
+	color: #fff;
+	background: #60a756;
+	text-align: center;
+	border-radius: 5px;
+	padding: 4px 15px;
+}
+.anulada{
+	border-radius: 5px;
+	background: #f36a6a;
+}
+.inactive{
+	background-color: #726f6f;
+	color: #ccc;
+	cursor: default;
 	
 }

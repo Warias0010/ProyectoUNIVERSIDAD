@@ -48,7 +48,7 @@
 					<a href="#">Facturas</a>
 					<ul>
 						<li><a href="nueva_venta.php">Crear Factura</a></li>
-						<li><a href="factura1">Facturas</a></li>
+						<li><a href="ventas.php">Lista de facturas</a></li>
 					</ul>
 				</li>
 			</ul>

@@ -75,7 +75,7 @@
 		<div class="data_delete">
 			<h2>¿Está seguro de eliminar el siguiente registro?</h2>
 			<p>Nombre del cliente: <span><?php echo $nombre; ?></span></p>
-			<p>nit: <span><?php echo $nit; ?></span></p>
+			<p>Cédula: <span><?php echo $nit; ?></span></p>
 			
 			<form method="post" action="">
 				<input type="hidden" name="idcliente" value="<?php echo $idcliente; ?>">
