@@ -1,4 +1,14 @@
 $(document).ready(function(){
+    //modal para el form add product
+    $('.add_product').click(function(e){
+        e.preventDefault();
+        var producto = $(this).attr('product');
+        alert(producto);
+        $('.modal').fadeIn();
+       
+    });
+    
+    
      //facturar venta
      $('#btn_facturar_venta').click(function(e){
         e.preventDefault(); 
@@ -308,6 +318,10 @@ $(document).ready(function(){
     $('#div_registro_cliente').slideDown();
   });
 });//termina el and ready
+function coloseModal(){
+    $('.modal').fadeOut();
+
+}
 //genera PDF
 function generarPDF(cliente,factura){
     var ancho = 1000;
@@ -374,6 +388,7 @@ function viewProcesar(){
 
     }
 }
+
 //cuando se recargue la pagina buscar si tiene fac no realizada
 function searchForDetalle(id){
     var action= 'searchForDetalle';
@@ -402,4 +417,5 @@ function searchForDetalle(id){
         error: function(error){
         }
     });
+    
 }

@@ -76,13 +76,15 @@
 					<td><?php echo $data["existencia"]; ?></td>
 					<td><?php echo $data["date_add"]; ?></td>
 					<td>
-						<a class="link_edit" href="editar_productos.php?id=<?php echo $data["codproducto"]; ?>">Editar Producto</a>
-						<?php if($_SESSION['rol']==1|| $_SESSION['rol']==2){?>
-						|
-						<a class="link_delete" href="#">Eliminar</a>
-					<?php } ?>
-						
+					<?php if($_SESSION['rol']==1|| $_SESSION['rol']==2){?>
+					<a class="link_add" href="agregar_productos.php?id=<?php echo $data["codproducto"]; ?>">Agregar Stok</a>|
+
+						<a class="link_edit" href="editar_productos.php?id=<?php echo $data["codproducto"]; ?>">Editar</a>
+						 |
+						<a class="link_delete" href="eliminar_confirmar_producto?id=<?php echo $data["codproducto"]; ?>">Eliminar</a>
+										
 					</td>
+					<?php } ?>
 				</tr>
 			
 		<?php 
