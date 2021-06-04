@@ -11,22 +11,23 @@
 	if(!empty($_POST))
 	{
 		$alert='';
-		if(empty($_POST['proveedor']) ||empty($_POST['contacto']) || empty($_POST['telefono']) || empty($_POST['direccion']))
+		if(empty($_POST['proveedor']) ||empty($_POST['producto']) ||empty($_POST['precio']) ||($_POST['precio'])<= 0 || empty($_POST['cantidad'])|| ($_POST['cantidad'])<= 0)
 		{
 		$alert='<p class="msg_error">Todos los campos son obligatorios.</p>';
 		}else{
 
 			$proveedor    = $_POST['proveedor'];
-			$contacto = $_POST['contacto'];
-			$telefono  = $_POST['telefono'];
-			$direccion   = $_POST['direccion'];
+			$categoria    = $_POST['categoria'];
+			$producto = $_POST['producto'];
+			$precio  = $_POST['precio'];
+			$cantidad   = $_POST['cantidad'];
 			$usuario_id  = $_SESSION['idUser'];
 
 
-				$query_insert = mysqli_query($conection,"INSERT INTO proveedor(proveedor,contacto,telefono,direccion,usuario_id)
-					VALUES('$proveedor','$contacto','$telefono','$direccion','$usuario_id')");
+				$query_insert = mysqli_query($conection,"INSERT INTO producto(proveedor,categoria,descripcion,precio,existencia,usuario_id)
+					VALUES('$proveedor','$categoria','$producto','$precio','$cantidad','$usuario_id')");
 					if($query_insert){
-					$alert='<p class="msg_save">proveedor guardado correctamente.</p>';
+					$alert='<p class="msg_save">Producto guardado correctamente.</p>';
 				}else{
 					$alert='<p class="msg_error">Error al guardar el proveedor.</p>';
 				}
@@ -34,11 +35,9 @@
 			
 			}
 
-			mysqli_close($conection);
+		
 			
 		}
-
-
 
  ?>
 
@@ -53,18 +52,7 @@
 	<?php include "includes/header.php"; ?>
 	<section id="container">
 
-
-
-
-
-
-
-
-		
 		<div class="form_register">
-		
-
-
 
 	<h1>Registro de Productos</h1>
 			<hr>
@@ -72,25 +60,55 @@
 
 			<form action="" method="post" enctype="multipart/form-data">
 				<label for="proveedor">Proveedor</label>
-				<select name="proveedor" id="proveedor">
-					<option value="1">Sin Porveedor</option>
+				<?php
+				$query_proveedor = mysqli_query($conection,"SELECT codproveedor,proveedor FROM proveedor WHERE 
+				estatus = 1 ORDER BY proveedor ASC");
+                $result_proveedor = mysqli_num_rows($query_proveedor);
+			
+				 ?>
+				 <select name="proveedor" id="proveedor">
+				 <?php 
+				 if($result_proveedor > 0){
+					 while($proveedor = mysqli_fetch_array($query_proveedor)){
+
+				 ?>
+				 	<option value="<?php echo $proveedor['codproveedor']; ?>"><?php echo $proveedor['proveedor']; ?></option>
+				 <?php 
+				  }	 
+				}
+				 ?>
+				
 				</select>
-			
+
+				<label for="categoria">Categoria</label>
+				<?php
+				$query_categoria = mysqli_query($conection, "SELECT cod_categoria,nombre FROM categoria");
+                $result_categoria = mysqli_num_rows($query_categoria);
+				mysqli_close($conection);
+				 ?>
+				 <select name="categoria" id="categoria">
+				 <?php 
+				 if($result_categoria > 0){
+					 while($categoria = mysqli_fetch_array($query_categoria)){
+
+				 ?>
+				 	<option value="<?php echo $categoria['cod_categoria']; ?>"><?php echo $categoria['nombre']; ?></option>
+				 <?php 
+				  }	 
+				}
+				 ?>
+				</select>			
 				<label for="producto">Producto</label>
-				<input type="text" name="producto" id="producto" placeholder="Nombre completo del Producto">
-			
-				<label for="precio">Precio</label>
-				<input type="number" name="precio"id="precio" placeholder="Precio del Producto">
+				<input type="text" name="producto" id="producto" placeholder="Nombre del Producto">			
+				<label for="precio">Precio C$</label>
+				<input type="number" name="precio"id="precio" placeholder="Precio C$ del Producto">
 				<label for="cantidad">Cantidad</label>
-				<input type="number" name="cantidad" id="cantidad" placeholder="Cantidad del Producto">				
-				<input type="submit" value="Guardar Producto" class="btn_save">
+				<input type="number" name="cantidad" id="cantidad" placeholder="Cantidad del Producto">
+
+				<button type="submit" value="Guardar Producto" class="btn_save">Guardar Producto</button>
 
 			</form>
-
-
 		</div>
-
-
 	</section>
 	<?php include "includes/footer.php"; ?>
 </body>

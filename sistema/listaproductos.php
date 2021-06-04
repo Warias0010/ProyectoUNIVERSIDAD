@@ -15,16 +15,16 @@
 <head>
 	<meta charset="UTF-8">
 	<?php include "includes/scripts.php"; ?>
-	<title>Lista de usuarios</title>
+	<title>Inventario de Productos</title>
 </head>
 <body>
 	<?php include "includes/header.php"; ?>
 	<section id="container">
 		
-		<h1>Lista de usuarios</h1>
-		<a href="registro_usuario.php" class="btn_new">Crear usuario</a>
+		<h1>Inventario De Productos</h1>
+		<a href="registro_producto.php" class="btn_new">Ingresar Nuevo Producto</a>
 		
-		<form action="buscar_usuario.php" method="get" class="form_search">
+		<form action="buscar_producto.php" method="get" class="form_search">
 			<input type="text" name="busqueda" id="busqueda" placeholder="Buscar">
 			<input type="submit" value="Buscar" class="btn_search">
 		</form>
@@ -72,14 +72,14 @@
 				<td><?php echo $data["codproducto"]; ?></td>
 					<td><?php echo $data["descripcion"]; ?></td>
 					<td><?php echo $data["proveedor"]; ?></td>
-					<td><?php echo $data["precio"]; ?></td>
+					<td>C$ <?php echo $data["precio"]; ?></td>
 					<td><?php echo $data["existencia"]; ?></td>
 					<td><?php echo $data["date_add"]; ?></td>
 					<td>
 						<a class="link_edit" href="editar_productos.php?id=<?php echo $data["codproducto"]; ?>">Editar Producto</a>
 						<?php if($_SESSION['rol']==1|| $_SESSION['rol']==2){?>
 						|
-						<a class="link_delete" href="eliminar_confirmar_usuario.php?id=<?php echo $data["idusuario"]; ?>">Eliminar</a>
+						<a class="link_delete" href="#">Eliminar</a>
 					<?php } ?>
 						
 					</td>
