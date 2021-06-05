@@ -53,6 +53,7 @@ include "../conexion.php";
 
             <div class="datos">
             <p>Nicaragua, <?php echo fechaC(); ?></p>
+
             <div class="wd50">
                     <label>Codigo Vendedor :</label>
                     <p class="textright"><?php echo $_SESSION['idUser'];?></p>
@@ -67,6 +68,32 @@ include "../conexion.php";
                         <a href="#" class="btn_ok textcenter" id="btn_anular_venta"><i class="fas fa-ban"></i>Anular</a>
                         <a href="#" class="btn_factura textcenter" id="btn_facturar_venta"><i class="fas fa-ban"></i>Generar Factura</a>
                     </div>
+                </div >
+                <div>
+                <label for="pago">Tipo Pago</label>
+
+                   <?php 
+
+                   $query_pago = mysqli_query($conection,"SELECT * FROM tipopago");
+                     mysqli_close($conection);
+                      $result_pago = mysqli_num_rows($query_pago);
+
+                      ?>
+
+              <select  class="wd50" name="pago" id="pago">
+                <?php 
+            if($result_pago > 0)
+                 {
+             while ($pago = mysqli_fetch_array($query_pago)) {
+               ?>
+              <option value="<?php echo $pago["Cod_Tipo_pago"]; ?>"><?php echo $pago["Nombre"] ?></option>
+                <?php 
+                # code...
+            }
+            
+        }
+     ?>
+</select>
                 </div>
             </div>
             

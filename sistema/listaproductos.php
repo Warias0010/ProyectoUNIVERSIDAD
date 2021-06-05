@@ -73,12 +73,13 @@
 					<td><?php echo $data["descripcion"]; ?></td>
 					<td><?php echo $data["proveedor"]; ?></td>
 					<td>C$ <?php echo $data["precio"]; ?></td>
-					<td><?php echo $data["existencia"]; ?></td>
+					<td>uds. <?php echo $data["existencia"]; ?></td>
 					<td><?php echo $data["date_add"]; ?></td>
-					<td>
-					<?php if($_SESSION['rol']==1|| $_SESSION['rol']==2){?>
-					<a class="link_add" href="agregar_productos.php?id=<?php echo $data["codproducto"]; ?>">Agregar Stok</a>|
 
+					<?php if($_SESSION['rol']==1|| $_SESSION['rol']==2){?>
+					<td>
+						<a class="link_add add_product" product="<?php echo $data["codproducto"]; ?>" href="#" >Actulizar Stock</a>
+						|
 						<a class="link_edit" href="editar_productos.php?id=<?php echo $data["codproducto"]; ?>">Editar</a>
 						 |
 						<a class="link_delete" href="eliminar_confirmar_producto?id=<?php echo $data["codproducto"]; ?>">Eliminar</a>

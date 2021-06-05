@@ -22,14 +22,14 @@
 		<div class="bodymodal">
 			<form action="" method="post" name="form_add_product" id="form_add_product" onsubmit="event.preventDefault(); sentDataProduct();">
 			<h1><br> Existencia y Precio De :</h1><br>
-			<h2 name="nameProducto">Sofa</h2><br>
+			<h2 name="nameProducto" class="nameProducto">Sofa</h2><br>
 			<input type="number" name="cantidad" id="txtcantidad" placeholder="Cantidad Ingreso" required><br>
 			<input type="text" name="cantidad" id="txtprecio" placeholder="Ingrese Nuevo precio" required><br>
 			<input type="hidden" name="producto_id" id="producto_id" required>
-			<input type="hidden" name="accion" id="addProduct" required>
+			<input type="hidden" name="action" id="addProduct" required>
 			<div class="alert alertAddProduct"></div>
 			<button type="submit" class="btn_new">Agregar</button>
-			<a href="#" class="btn_ok  closeModal" onclick="coloseModal();">Cerrar</a>
+			<a href="#" class="btn_ok  closeModal" onclick="closeModal();">Cerrar</a>
 
 			</form>
 		</div>

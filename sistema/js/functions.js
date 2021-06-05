@@ -1,14 +1,4 @@
 $(document).ready(function(){
-    //modal para el form add product
-    $('.add_product').click(function(e){
-        e.preventDefault();
-        var producto = $(this).attr('product');
-        alert(producto);
-        $('.modal').fadeIn();
-       
-    });
-    
-    
      //facturar venta
      $('#btn_facturar_venta').click(function(e){
         e.preventDefault(); 
@@ -317,8 +307,40 @@ $(document).ready(function(){
 
     $('#div_registro_cliente').slideDown();
   });
+
+  //modal para el form add product
+$('.add_product').click(function(e){
+    e.preventDefault();
+    var producto1 = $(this).attr('product');
+    var action = 'infoProducto1';
+    
+        $.ajax({
+            url: 'ajax.php',
+            type:"POST",
+            async: true,
+            data: {action:action,producto1:producto1},
+            success: function(response){
+                console.log(response);
+                if(response != 'error'){
+                    var info = JSON.parse(response);
+                    console.log(info);
+                    $('#producto_id').val(info.codproducto);
+                    $('.nameProducto').html(info.descripcion);
+                }else
+                window.alert("Ocurrio un error en el proceso");
+            },
+            error: function(error){
+                console.log(error);     
+            }
+        });
+
+       $('.modal').fadeIn();
+    });
+
 });//termina el and ready
-function coloseModal(){
+
+//funcion para el modal de agregar inventario
+function closeModal(){
     $('.modal').fadeOut();
 
 }
