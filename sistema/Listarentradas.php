@@ -15,33 +15,32 @@
 <head>
 	<meta charset="UTF-8">
 	<?php include "includes/scripts.php"; ?>
-	<title>Inventario de Productos</title>
+	<title>Lista de usuarios</title>
 </head>
 <body>
 	<?php include "includes/header.php"; ?>
 	<section id="container">
 		
-		<h1>Inventario De Productos</h1>
-		<a href="registro_producto.php" class="btn_new">Ingresar Nuevo Producto</a>
+		<h1>Ultimas Entradas a Inventario</h1>
+		<a href="listaproductos.php" class="btn_new">Agregar Nueva Entrada</a>
 		
-		<form action="buscar_producto.php" method="get" class="form_search">
+		<form action="buscar_entrada.php" method="get" class="form_search">
 			<input type="text" name="busqueda" id="busqueda" placeholder="Buscar">
 			<input type="submit" value="Buscar" class="btn_search">
 		</form>
 
 		<table>
 			<tr>
-			    <th>Cod_Producto</th>
-				<th>Descripcion</th>
-				<th>Proveedor</th>
+				<th>Cod_Entrada</th>
+				<th>Producto</th>
+				<th>Fecha</th>
+				<th>Cantidad</th>
 				<th>Precio</th>
-				<th>Existencia</th>
-				<th>Fecha Entrada</th>
-				<th>Acciones</th>
+				<th>Ingreso Producto</th>
 			</tr>
 		<?php 
 			//Paginador
-			$sql_registe = mysqli_query($conection,"SELECT COUNT(*) as total_registro FROM producto WHERE estatus = 1 ");
+			$sql_registe = mysqli_query($conection,"SELECT COUNT(*) as total_registro FROM entradas ");
 			$result_register = mysqli_fetch_array($sql_registe);
 			$total_registro = $result_register['total_registro'];
 
@@ -57,7 +56,9 @@
 			$desde = ($pagina-1) * $por_pagina;
 			$total_paginas = ceil($total_registro / $por_pagina);
 
-			$query = mysqli_query($conection,"SELECT p.codproducto,p.descripcion,pr.proveedor,p.precio,p.existencia,p.date_add FROM producto p INNER JOIN proveedor pr ON pr.codproveedor=p.proveedor WHERE 1 ORDER BY p.codproducto ASC LIMIT $desde,$por_pagina 
+			$query = mysqli_query($conection,"SELECT E.identrada,E.codproducto,E.fecha,E.cantidad,E.precio, U.nombre as usuario, P.descripcion as producto FROM entradas E INNER JOIN usuario U ON E.usuario_id = U.idusuario 
+                                               INNER JOIN producto P ON E.codproducto= P.codproducto 
+                                               ORDER BY E.identrada DESC LIMIT $desde,$por_pagina 
 				");
 
 			mysqli_close($conection);
@@ -69,23 +70,12 @@
 					
 			?>
 				<tr>
-				<td><?php echo $data["codproducto"]; ?></td>
-					<td><?php echo $data["descripcion"]; ?></td>
-					<td><?php echo $data["proveedor"]; ?></td>
-					<td>C$ <?php echo $data["precio"]; ?></td>
-					<td> <?php echo $data["existencia"]; ?> uds.</td>
-					<td><?php echo $data["date_add"]; ?></td>
-
-					<?php if($_SESSION['rol']==1|| $_SESSION['rol']==2){?>
-					<td>
-						<a class="link_add add_product" product="<?php echo $data["codproducto"]; ?>" href="#" >Actulizar Stock</a>
-						|
-						<a class="link_edit" href="editar_productos.php?id=<?php echo $data["codproducto"]; ?>">Editar</a>
-						 |
-						<a class="link_delete" href="eliminar_confirmar_producto?id=<?php echo $data["codproducto"]; ?>">Eliminar</a>
-										
-					</td>
-					<?php } ?>
+					<td><?php echo $data["identrada"]; ?></td>
+					<td><?php echo $data["producto"]; ?></td>
+					<td><?php echo $data["fecha"]; ?></td>
+					<td><?php echo $data["cantidad"]; ?></td>
+                    <td><?php echo $data["precio"]; ?></td>
+					<td><?php echo $data['usuario'] ?></td>
 				</tr>
 			
 		<?php 

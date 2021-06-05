@@ -32,14 +32,14 @@
 				</li>
 				<?php } ?>
 				<li class="principal">
-					<a href="#">Productos</a>
+					<a href="#">Gestion de inventario</a>
 					<ul>
 							<?php 
 						if($_SESSION['rol'] == 1||$_SESSION['rol'] == 2){
 						 ?>
 						<li><a href="registro_producto.php">Nuevo Producto</a></li>
 						<li><a href="listaproductos.php">Lista de Productos</a></li>
-						<li><a href="pro.php">Actulizar Inventario</a></li>
+						<li><a href="Listarentradas.php">Entradas a Inventario</a></li>
 						
 						<?php } ?>
 					</ul>

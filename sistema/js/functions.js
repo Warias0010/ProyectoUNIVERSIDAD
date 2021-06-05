@@ -320,10 +320,10 @@ $('.add_product').click(function(e){
             async: true,
             data: {action:action,producto1:producto1},
             success: function(response){
-                console.log(response);
+               // console.log(response);
                 if(response != 'error'){
                     var info = JSON.parse(response);
-                    console.log(info);
+                  //  console.log(info);
                     $('#producto_id').val(info.codproducto);
                     $('.nameProducto').html(info.descripcion);
                 }else
@@ -339,8 +339,28 @@ $('.add_product').click(function(e){
 
 });//termina el and ready
 
+function sendDataProduct(){
+    $('.alertAddProduct').html('');
+
+    $.ajax({
+        url: 'ajax.php',
+        type:"POST",
+        async: true,
+        data: $('#form_add_product').serialize(),
+        success: function(response){
+            console.log(response);
+        },
+        error: function(error){
+            console.log(error);     
+        }
+    });
+}
+
 //funcion para el modal de agregar inventario
 function closeModal(){
+    $('.alertAddProduct').html('');
+    $('#txtcantidad').val('');
+    $('#txtprecio').val('');
     $('.modal').fadeOut();
 
 }
