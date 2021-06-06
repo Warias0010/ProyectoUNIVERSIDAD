@@ -38,6 +38,7 @@
 				<th>Existencia</th>
 				<th>Fecha Entrada</th>
 				<th>Acciones</th>
+				<th>Alerta</th>
 			</tr>
 		<?php 
 			//Paginador
@@ -68,12 +69,12 @@
 				while ($data = mysqli_fetch_array($query)) {
 					
 			?>
-				<tr>
-				<td><?php echo $data["codproducto"]; ?></td>
+				<tr class= "row"<?php echo $data["codproducto"]; ?> >
+				    <td><?php echo $data["codproducto"]; ?></td>
 					<td><?php echo $data["descripcion"]; ?></td>
 					<td><?php echo $data["proveedor"]; ?></td>
-					<td>C$ <?php echo $data["precio"]; ?></td>
-					<td> <?php echo $data["existencia"]; ?> uds.</td>
+					<td class= "celPrecio">C$ <?php echo $data["precio"]; ?></td>
+					<td class= "celExistencia"> <?php echo $data["existencia"]; ?> uds.</td>
 					<td><?php echo $data["date_add"]; ?></td>
 
 					<?php if($_SESSION['rol']==1|| $_SESSION['rol']==2){?>
@@ -85,6 +86,9 @@
 						<a class="link_delete" href="eliminar_confirmar_producto?id=<?php echo $data["codproducto"]; ?>">Eliminar</a>
 										
 					</td>
+					<?php 
+					if ( $data['existencia'] < 10 ): echo 
+                	"<td class=\"text-center\" style=\"background-color: #333; color: #ffff;\">Nivel Bajo</td>"; else: echo "<td></td>"; endif; ?>
 					<?php } ?>
 				</tr>
 			

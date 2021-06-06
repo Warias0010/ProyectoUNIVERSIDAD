@@ -349,6 +349,17 @@ function sendDataProduct(){
         data: $('#form_add_product').serialize(),
         success: function(response){
             console.log(response);
+           if(response == 'error'){
+              $('.alertAddProduct').html('<p style="color:red;">Eror al ejecutar la acción</p>');
+           }else
+           {
+            var info = JSON.parse(response);
+            $('.row'+info.producto_id+'.celPrecio').html(info.nuevo_precio);
+            $('.row'+info.producto_id+'.celExistencia').html(info.nueva_existencia);
+            $('#txtprecio').val('');
+            $('#txtcantidad').val('');
+            $('.alertAddProduct').html('<p>Registro Agregado Correctamente. </p>');
+           }
         },
         error: function(error){
             console.log(error);     
