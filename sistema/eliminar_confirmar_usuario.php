@@ -16,7 +16,7 @@
 		$idusuario = $_POST['idusuario'];
 
 		//$query_delete = mysqli_query($conection,"DELETE FROM usuario WHERE idusuario =$idusuario ");
-		$query_delete = mysqli_query($conection,"UPDATE usuario SET estatus = 0 WHERE idusuario = $idusuario ");
+		$query_delete = mysqli_query($conection,"UPDATE usuario SET estatus = 2 WHERE idusuario = $idusuario ");
 		mysqli_close($conection);
 		if($query_delete){
 			header("location: lista_usuarios.php");
@@ -75,7 +75,7 @@
 	<?php include "includes/header.php"; ?>
 	<section id="container">
 		<div class="data_delete">
-			<h2>¿Está seguro de eliminar el siguiente registro?</h2>
+			<h2>¿Está seguro que desea desactivar el siguiente registro?</h2>
 			<p>Nombre: <span><?php echo $nombre; ?></span></p>
 			<p>usuario: <span><?php echo $usuario; ?></span></p>
 			<p>Tipo Usuario: <span><?php echo $rol; ?></span></p>
