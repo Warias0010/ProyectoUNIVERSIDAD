@@ -65,7 +65,7 @@
 
 			<form action="" method="post">
 				<label for="nit">Cédula</label>
-				<input type="number" name="nit" id="nit" placeholder="Cédula cliente">
+				<input type="text" name="nit" id="nit" placeholder="Cédula cliente">
 
 				<label for="nombre">Nombre</label>
 				<input type="text" name="nombre" id="nombre" placeholder="Nombre completo">

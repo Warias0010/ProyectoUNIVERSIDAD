@@ -81,8 +81,8 @@
                    }else{
                     $estado = '<span class="anulada" >Anulada</span>';
                    }
-			?>
-				<tr id="row_<?php echo $data["nofactura"];?>" >
+			          ?>
+				 <tr id="row_<?php echo $data["nofactura"];?>" >
 					<td><?php echo $data["nofactura"]; ?></td>
 					<td><?php echo $data["fecha"]; ?></td>
 					<td><?php echo $data["cliente"]; ?></td>

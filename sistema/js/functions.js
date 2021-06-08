@@ -354,8 +354,9 @@ function sendDataProduct(){
            }else
            {
             var info = JSON.parse(response);
-            $('.row'+info.producto_id+'.celPrecio').html(info.nuevo_precio);
             $('.row'+info.producto_id+'.celExistencia').html(info.nueva_existencia);
+            $('.row'+info.producto_id+'.celPrecio').html(info.nuevo_precio);
+            
             $('#txtprecio').val('');
             $('#txtcantidad').val('');
             $('.alertAddProduct').html('<p>Registro Agregado Correctamente. </p>');

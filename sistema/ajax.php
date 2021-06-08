@@ -22,7 +22,7 @@ include "../conexion.php";
     }
     //agregar producto a entrada 
     if($_POST['action']== 'addProduct'){
-        if(!empty($_POST['cantidad']) ||!empty($_POST['precio']) ||!empty($_POST['producto_id']) ){
+        if(!empty($_POST['cantidad']) ||!empty($_POST['precio']) ||!empty($_POST['producto_id'])){
 
             $cantidad = $_POST['cantidad'];
             $precio = $_POST['precio'];

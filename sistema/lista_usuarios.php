@@ -36,11 +36,12 @@
 				<th>Correo</th>
 				<th>Usuario</th>
 				<th>Rol</th>
+				<th>Estado</th>
 				<th>Acciones</th>
 			</tr>
 		<?php 
 			//Paginador
-			$sql_registe = mysqli_query($conection,"SELECT COUNT(*) as total_registro FROM usuario WHERE estatus = 1 ");
+			$sql_registe = mysqli_query($conection,"SELECT COUNT(*) as total_registro FROM usuario WHERE estatus != 10 ");
 			$result_register = mysqli_fetch_array($sql_registe);
 			$total_registro = $result_register['total_registro'];
 
@@ -56,7 +57,10 @@
 			$desde = ($pagina-1) * $por_pagina;
 			$total_paginas = ceil($total_registro / $por_pagina);
 
-			$query = mysqli_query($conection,"SELECT u.idusuario, u.nombre, u.correo, u.usuario, r.rol FROM usuario u INNER JOIN rol r ON u.rol = r.idrol WHERE estatus = 1 ORDER BY u.idusuario ASC LIMIT $desde,$por_pagina 
+			$query = mysqli_query($conection,"SELECT u.idusuario, u.nombre, u.correo, u.usuario,u.estatus, r.rol as rol, e.Descripcion as estado FROM usuario u INNER JOIN rol r ON u.rol = r.idrol
+			                      INNER JOIN estado e ON u.estatus=e.codestado
+			                      WHERE u.estatus !=10 ORDER BY u.idusuario 
+											  ASC LIMIT $desde,$por_pagina 
 				");
 
 			mysqli_close($conection);
@@ -65,14 +69,19 @@
 			if($result > 0){
 
 				while ($data = mysqli_fetch_array($query)) {
-					
+					if($data["estatus"]== 1){
+						$estatus = '<span class="pagada" >Activo</span>';
+					}else{
+					 $estatus = '<span class="anulada" >Inactivo</span>';
+					}
 			?>
 				<tr>
 					<td><?php echo $data["idusuario"]; ?></td>
 					<td><?php echo $data["nombre"]; ?></td>
 					<td><?php echo $data["correo"]; ?></td>
 					<td><?php echo $data["usuario"]; ?></td>
-					<td><?php echo $data['rol'] ?></td>
+					<td><?php echo $data['rol']; ?></td>
+					<td><?php echo $estatus; ?></td>
 					<td>
 						<a class="link_edit" href="editar_usuario.php?id=<?php echo $data["idusuario"]; ?>">Editar</a>
 
