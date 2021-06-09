@@ -1,6 +1,27 @@
 <?php
 session_start();
 include "../conexion.php";
+
+//info factura
+if($_POST['action']=='infoFactura'){
+    if(!empty($_POST['nofactura'])){
+        
+
+        $nofactura= $_POST['nofactura'];
+        $query = mysqli_query($conection,"SELECT * FROM factura WHERE nofactura ='$nofactura' 
+        AND estatus=1 ");
+        mysqli_close($conection);
+        
+        $result = mysqli_num_rows($query);
+        if($result >0){
+            $data = mysqli_fetch_assoc($query);
+            echo json_encode($data,JSON_UNESCAPED_UNICODE);
+            exit;
+        }
+    }
+    echo "error";
+    exit;
+}
 //print_r($_POST);exit;
 //actualiza stock
     //extrae datos del producto

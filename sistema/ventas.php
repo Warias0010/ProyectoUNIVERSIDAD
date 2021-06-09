@@ -98,8 +98,8 @@
 						<div class="div_acciones">
 							<div>
 							<button class="btn_view btn_factura" cl="<?php echo $data["codcliente"]; ?>" f="<?php echo $data['nofactura']; ?>">Ver factura</button>
+							
 							</div>
-						
 						<?php 
 						if($_SESSION['rol'] == 1){
 							if($data["estatus"]== 1)

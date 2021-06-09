@@ -1,4 +1,44 @@
 $(document).ready(function(){
+
+    //modal forms anular factura
+    $('.anular_factura').click(function(e){
+        e.preventDefault();
+        var nofactura = $(this).attr('fac');
+        var action = 'infoFactura';
+        $.ajax({
+            url : 'ajax.php',
+             type : "POST",
+             async: true,
+             data:{action:action,nofactura:nofactura},
+             success : function(response){
+                 if(response !='error'){
+                    var info = JSON.parse(response);
+                   // console.log(response);
+                      $('.bodymodal').html('<form action="" method="post" name="form_anular_factura" id="form_anular_factura" onsubmit="event.preventDefault(); anularFactura(); ">'+
+                      '<h1><br> Anular Factura</h1><br>'+
+                      '<p>¿Realmente desea anular la factura?</p>'+
+
+                      
+                      '<div class="alert alertAddProduct"></div>'+
+                      '<p><strong>No.Factura: '+info.nofactura+'</strong></>'+
+                      '<p><strong>Monto C$: ' +info.totalfactura+'</strong></>'+
+                      '<p><strong>Fecha/Hora Emitida  : '+info.fecha+'</strong></>'+
+                      '<input type="hidden" name="action" value="anularFactura" required>'+
+                      '<input type="hidden" name="no_factura" value="'+info.nofactura+'" required>'+
+
+                      
+                      '<button type="submit" class="btn_ok">Anular</button>'+
+                      '<a href="#" class="btn_new"  onclick="closeModal();">Cerrar</a>'+
+                      '</form>')
+                 }
+             },
+             error: function(error){
+             console.log(error);
+             }
+        });
+        $('.modal').fadeIn();
+    });
+
      //facturar venta
      $('#btn_facturar_venta').click(function(e){
         e.preventDefault(); 

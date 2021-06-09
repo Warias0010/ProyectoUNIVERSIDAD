@@ -58,7 +58,9 @@
 			$desde = ($pagina-1) * $por_pagina;
 			$total_paginas = ceil($total_registro / $por_pagina);
 
-			$query = mysqli_query($conection,"SELECT p.codproducto,p.descripcion,pr.proveedor,p.precio,p.existencia,p.date_add FROM producto p INNER JOIN proveedor pr ON pr.codproveedor=p.proveedor WHERE 1 ORDER BY p.codproducto ASC LIMIT $desde,$por_pagina 
+			$query = mysqli_query($conection,"SELECT p.codproducto,p.descripcion,pr.proveedor,p.precio,p.existencia,p.date_add 
+			                                FROM producto p INNER JOIN proveedor pr ON pr.codproveedor=p.proveedor
+											 WHERE 1 ORDER BY p.codproducto ASC LIMIT $desde,$por_pagina 
 				");
 
 			mysqli_close($conection);
@@ -83,7 +85,7 @@
 						|
 						<a class="link_edit" href="editar_productos.php?id=<?php echo $data["codproducto"]; ?>">Editar</a>
 						 |
-						<a class="link_delete" href="eliminar_confirmar_producto?id=<?php echo $data["codproducto"]; ?>">Eliminar</a>
+						<a class="link_delete del_product" href="#" product="<?php echo $data["codproducto"];?>">Eliminar</a>
 										
 					</td>
 					<?php 

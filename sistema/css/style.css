@@ -611,4 +611,9 @@ table td{
 	border-radius: 10px;
 }
 
+#form_anular_factura{
+	width: 550px;
+	text-align: center;
+	justify-content: space-between;
+}
 
