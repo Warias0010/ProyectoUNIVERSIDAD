@@ -55,9 +55,13 @@
 	<title>Registro Cliente</title>
 </head>
 <body>
+<script>
+function form_register(nit){
+  
+}
+</script>
 	<?php include "includes/header.php"; ?>
 	<section id="container">
-		
 		<div class="form_register">
 			<h1>Registro de Clientes</h1>
 			<hr>
@@ -65,7 +69,7 @@
 
 			<form action="" method="post">
 				<label for="nit">Cédula</label>
-				<input type="text" name="nit" id="nit" placeholder="Cédula cliente">
+				<input type="text" name="nit" id="nit" maxlength="16" placeholder="Cédula cliente">
 
 				<label for="nombre">Nombre</label>
 				<input type="text" name="nombre" id="nombre" placeholder="Nombre completo">

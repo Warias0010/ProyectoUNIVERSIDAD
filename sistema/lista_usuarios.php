@@ -85,9 +85,11 @@
 					<td>
 						<a class="link_edit" href="editar_usuario.php?id=<?php echo $data["idusuario"]; ?>">Editar</a>
 
-					<?php if($data["idusuario"] != 1){ ?>
+					<?php if($data["idusuario"] != 24){ ?>
 						|
-						<a class="link_delete" href="eliminar_confirmar_usuario.php?id=<?php echo $data["idusuario"]; ?>">Eliminar</a>
+						<a class="link_delete" href="eliminar_confirmar_usuario.php?id=<?php echo $data["idusuario"]; ?>">Inhabilitar</a>
+						|
+						<a class="link_delete" href="habilitarusuario.php?id=<?php echo $data["idusuario"]; ?>">Habilitar</a>
 					<?php } ?>
 						
 					</td>

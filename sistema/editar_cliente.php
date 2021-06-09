@@ -108,8 +108,8 @@
 
 			<form action="" method="post">
 				<input type="hidden" name="id" value="<?php echo $idcliente; ?>">
-				<label for="nit">nit</label>
-				<input type="number" name="nit" id="nit" placeholder="Nit de cliente" value="<?php echo $nit; ?>">
+				<label for="nit">Cedula</label>
+				<input type="text" name="nit" id="nit" maxlength="16" placeholder="Cedula de cliente" value="<?php echo $nit; ?>">
 
 				<label for="nombre">Nombre</label>
 				<input type="text" name="nombre" id="nombre" placeholder="Nombre completo"value="<?php echo $nombre; ?>">

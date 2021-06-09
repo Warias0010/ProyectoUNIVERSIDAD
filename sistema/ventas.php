@@ -35,6 +35,7 @@
 		<table>
 			<tr>
 				<th>No.Factura</th>
+				<th>Pago</th>
 				<th>Fecha / Hora</th>
 				<th>Cliente</th>
 				<th>Vendedor</th>
@@ -62,8 +63,11 @@
 
 			$query = mysqli_query($conection,"SELECT f.nofactura,f.fecha,f.totalfactura,f.codcliente,f.estatus,
                                              u.nombre as vendedor,
-                                            cl.nombre as cliente 
+                                            cl.nombre as cliente,
+											p.nombre as pago
                                             FROM factura f
+											INNER JOIN tipopago p
+                                            ON f.metodopago= p.Cod_Tipo_pago
                                             INNER JOIN usuario u 
                                             ON f.usuario = u.idusuario
                                             INNER JOIN cliente cl
@@ -84,6 +88,7 @@
 			          ?>
 				 <tr id="row_<?php echo $data["nofactura"];?>" >
 					<td><?php echo $data["nofactura"]; ?></td>
+					<td><?php echo $data["pago"]; ?></td>
 					<td><?php echo $data["fecha"]; ?></td>
 					<td><?php echo $data["cliente"]; ?></td>
 					<td><?php echo $data["vendedor"]; ?></td>

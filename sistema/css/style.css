@@ -7,8 +7,21 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
+
 body{
 	background: #ededed;
+}
+body .view1{
+	margin-top: 30px;
+	color:  #edeff1;
+	border-collapse: collapse;
+	font-size: 12pt;
+	font-family: 'arial';
+	width: 200px;
+	height: 120px;
+    background-color: #ffbf0081;
+	text-align: center;
 }
 h1, h2, h3, h4, h5, h6 {
     font-family: 'arial';
@@ -556,6 +569,7 @@ table td{
 .anulada{
 	border-radius: 5px;
 	background: #f36a6a;
+	padding: 4px 15px;
 }
 .inactive{
 	background-color: #726f6f;
