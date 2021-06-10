@@ -1,7 +1,24 @@
 <?php
 session_start();
 include "../conexion.php";
+//anular factura
+if($_POST['action']=='anularFactura'){
 
+    if(!empty($_POST['noFactura']))
+    {
+        $noFactura = $_POST['noFactura'];
+        $query_anular = mysqli_query($conection,"CALL anular_factura($noFactura)");
+        mysqli_close($conection);
+        $result= mysqli_num_rows($query_anular);
+        if($result>0){
+            $data = mysqli_fetch_assoc($query_anular);
+            echo json_encode($data,JSON_UNESCAPED_UNICODE);
+            exit;
+        }
+    }
+    echo "error";
+    exit;
+}
 //info factura
 if($_POST['action']=='infoFactura'){
     if(!empty($_POST['nofactura'])){

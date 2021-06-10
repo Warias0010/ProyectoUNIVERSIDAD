@@ -92,7 +92,7 @@
 					<td><?php echo $data["fecha"]; ?></td>
 					<td><?php echo $data["cliente"]; ?></td>
 					<td><?php echo $data["vendedor"]; ?></td>
-                    <td><?php echo $estado; ?></td>
+                    <td class="estado"><?php echo $estado; ?></td>
                     <td class="textright totalfactura"><span>C$</span><?php echo $data["totalfactura"]; ?></td>               
 					<td>
 						<div class="div_acciones">

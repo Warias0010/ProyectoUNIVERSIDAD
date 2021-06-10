@@ -23,8 +23,8 @@ $(document).ready(function(){
                       '<p><strong>No.Factura: '+info.nofactura+'</strong></>'+
                       '<p><strong>Monto C$: ' +info.totalfactura+'</strong></>'+
                       '<p><strong>Fecha/Hora Emitida  : '+info.fecha+'</strong></>'+
-                      '<input type="hidden" name="action" value="anularFactura" required>'+
-                      '<input type="hidden" name="no_factura" value="'+info.nofactura+'" required>'+
+                      '<input type="hidden"  name="action" value="anularFactura" required>'+
+                      '<input id="no_factura" type="hidden"  name="no_factura" value="'+info.nofactura+'" required>'+
 
                       
                       '<button type="submit" class="btn_ok">Anular</button>'+
@@ -379,6 +379,31 @@ $('.add_product').click(function(e){
 
 });//termina el and ready
 
+//funcion anular la factura
+function anularFactura(){
+    var noFactura = $('#no_factura').val();
+    var action = 'anularFactura';
+    $.ajax({
+        url: 'ajax.php',
+        type:"POST",
+        async: true,
+        data: {action:action,noFactura:noFactura},
+        success: function(response){
+            if(response=='error'){
+                $('.alertAddProduct').html('<p style="color:red;"> Error en el proceso de anular la factura.</p>');
+            }else{
+                $('#row_ '+noFactura+' .estado').html('<span class="anulada">Anulada</span>');
+                $('#form_anular_factura .btn_ok').remove();
+                $('#row_'+noFactura+' .div_factura').html('<button type="button" class="btn_anular inactive">Anulada</button>');
+                $('.alertAddProduct').html('<p>Factura Anulada</p>');
+            }
+
+        },
+        error: function(error){
+
+        }
+    });
+}
 function sendDataProduct(){
     $('.alertAddProduct').html('');
 

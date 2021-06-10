@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-06-2021 a las 02:20:42
+-- Tiempo de generación: 10-06-2021 a las 07:25:59
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 7.4.14
 
@@ -183,7 +183,7 @@ INSERT INTO `categoria` (`cod_categoria`, `nombre`) VALUES
 
 CREATE TABLE `cliente` (
   `idcliente` int(11) NOT NULL,
-  `nit` int(11) DEFAULT NULL,
+  `nit` varchar(16) NOT NULL,
   `nombre` varchar(80) DEFAULT NULL,
   `telefono` int(11) DEFAULT NULL,
   `direccion` text DEFAULT NULL,
@@ -197,36 +197,9 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`idcliente`, `nit`, `nombre`, `telefono`, `direccion`, `dateadd`, `usuario_id`, `estatus`) VALUES
-(1, 0, 'Cliente Final', 878766787, 'Granada, Nicaragua', '2018-02-15 21:55:51', 1, 1),
-(2, 87654321, 'Pruea555555', 34343434, 'Calzada Buena Vista', '2018-02-15 21:57:03', 1, 0),
-(3, 22222, 'Elena HernÃ¡ndez', 987897987, 'nicaragua', '2018-02-15 21:59:20', 2, 0),
-(5, 55555, 'Helen', 98789798, 'prueba', '2018-02-18 10:53:53', 1, 0),
-(7, 798798798, 'Jorge Maldonado1', 2147483647, 'Colonia la Flores', '2018-02-18 11:10:07', 1, 1),
-(8, 203, 'Marta Cabrera888', 987987987, 'Calzada ', '2018-02-18 11:11:40', 2, 1),
-(10, 2147483647, 'Roberto Morazan', 2147483647, 'Calzada a', '2018-03-04 19:17:22', 1, 1),
-(11, 898798798, 'Rosa Pineda', 987998788, 'Plaza Sésamo', '2018-03-04 19:17:45', 1, 1),
-(14, 655555, 'pavon', 12345678, 'monimbo', '2021-04-05 18:25:41', 1, 0),
-(16, 2147483647, 'walter', 6166565, 'Granada, Nicaragua', '2021-05-04 14:22:01', 1, 1),
-(17, 203031197, 'walter arias', 778888, 'Grandad,Gomper 1/2 C al oeste', '2021-05-14 00:11:29', 1, 1),
-(21, 1212, 'ss', 515, '3', '2021-05-14 15:13:27', 1, 0),
-(22, 1212, 'ss', 515, '3', '2021-05-14 15:15:03', 1, 1),
-(23, 12121, '55', 52, 'sdsdsds', '2021-05-14 15:20:08', 1, 0),
-(24, 12122, 'walter arias', 652621, 'granada', '2021-05-14 15:27:01', 1, 1),
-(27, 555555, 'Coronavac', 2021, 'China', '2021-05-17 21:51:12', 1, 0),
-(28, 555555, 'Coronavac', 2021, 'China', '2021-05-17 21:51:12', 1, 0),
-(29, 1234567, '', 0, '', '2021-05-17 22:47:43', 1, 0),
-(30, 1234567, '', 0, '', '2021-05-17 22:47:46', 1, 0),
-(36, 999999999, 'Test02', 5595, '65', '2021-05-28 00:20:46', 1, 1),
-(37, 2147483647, '1122', 9, '7', '2021-05-28 00:22:30', 1, 1),
-(38, 2147483647, '1122', 9, '7', '2021-05-28 00:22:30', 1, 1),
-(41, 12345679, '01walter', 1223333, 'sdsd', '2021-05-29 23:26:32', 1, 1),
-(42, 12345679, '01walter', 1223333, 'sdsd', '2021-05-29 23:26:33', 1, 1),
-(43, 12345679, '', 0, '', '2021-05-29 23:26:33', 1, 1),
-(44, 12345679, '', 0, '', '2021-05-29 23:26:33', 1, 1),
-(45, 2222, 'Walter José Arias Anton', 522556632, 'Granda , de la gomper 1/c al oeste', '2021-05-31 10:40:36', 1, 1),
-(46, 2222, 'Walter José Arias Anton', 522556632, 'Granda , de la gomper 1/c al oeste', '2021-05-31 10:40:36', 1, 1),
-(47, 555, 'sdsd', 899, 'dsfsdfsdfds', '2021-05-31 10:46:15', 1, 1),
-(48, 555, 'sdsd', 899, 'dsfsdfsdfds', '2021-05-31 10:46:15', 1, 1);
+(49, '203-031191-1000T', 'Mario Alberto Arias Anton', 87992532, 'Granada,Gomper 1/2 C al oeste', '2021-06-07 20:38:43', 24, 1),
+(50, '203-031197-100T', '', 0, '', '2021-06-08 18:14:15', 24, 0),
+(51, '203-031197-100T', '', 0, '', '2021-06-08 18:14:16', 24, 0);
 
 -- --------------------------------------------------------
 
@@ -247,9 +220,8 @@ CREATE TABLE `detallefactura` (
 --
 
 INSERT INTO `detallefactura` (`correlativo`, `nofactura`, `codproducto`, `cantidad`, `precio_venta`) VALUES
-(33, 44, 11, 1, '9857.14'),
-(34, 44, 12, 1, '8500.00'),
-(36, 45, 11, 1, '9857.14');
+(39, 48, 18, 1, '8500.00'),
+(40, 49, 19, 2, '45.00');
 
 -- --------------------------------------------------------
 
@@ -285,8 +257,28 @@ CREATE TABLE `entradas` (
 --
 
 INSERT INTO `entradas` (`identrada`, `codproducto`, `fecha`, `cantidad`, `precio`, `usuario_id`) VALUES
-(23, 14, '2021-06-03 18:41:07', 10, '10500.00', 1),
-(24, 17, '2021-06-03 21:52:12', 11, '9000.00', 1);
+(46, 18, '2021-06-07 20:56:30', 1, '8500.00', 25),
+(47, 18, '2021-06-08 18:06:49', 2, '8500.00', 24),
+(48, 19, '2021-06-09 01:07:20', 50, '45.00', 24);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estado`
+--
+
+CREATE TABLE `estado` (
+  `codestado` int(11) NOT NULL,
+  `Descripcion` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `estado`
+--
+
+INSERT INTO `estado` (`codestado`, `Descripcion`) VALUES
+(1, 'Activo'),
+(2, 'Inactivo');
 
 -- --------------------------------------------------------
 
@@ -309,8 +301,8 @@ CREATE TABLE `factura` (
 --
 
 INSERT INTO `factura` (`nofactura`, `metodopago`, `fecha`, `usuario`, `codcliente`, `totalfactura`, `estatus`) VALUES
-(44, 1, '2021-06-04 17:52:25', 1, 41, '18357.14', 1),
-(45, 1, '2021-06-04 17:53:23', 1, 41, '9857.14', 1);
+(48, 1, '2021-06-08 18:15:34', 24, 49, '8500.00', 1),
+(49, 1, '2021-06-09 01:10:39', 26, 49, '90.00', 1);
 
 -- --------------------------------------------------------
 
@@ -335,11 +327,8 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`codproducto`, `descripcion`, `proveedor`, `categoria`, `precio`, `existencia`, `date_add`, `usuario_id`, `estatus`) VALUES
-(11, 'Pieza Sevilla', 3, 1, '9857.14', 19, '2021-06-03 18:13:57', 1, 1),
-(12, 'Pieza Porta Vaso', 3, 2, '8500.00', 9, '2021-06-03 18:17:37', 1, 1),
-(13, 'Pieza SINAI', 3, 1, '8500.00', 1, '2021-06-03 18:27:51', 1, 1),
-(14, 'Comedor 6', 3, 2, '10500.00', 10, '2021-06-03 18:41:07', 1, 1),
-(17, 'Pieza Trenza Acustico 2 sillones', 3, 1, '9000.00', 11, '2021-06-03 21:52:12', 1, 1);
+(18, 'Pieza Trenza Acustico 2 sillones', 15, 1, '8500.00', 2, '2021-06-07 20:56:30', 25, 1),
+(19, 'ProductosTeste1', 15, 1, '45.00', 48, '2021-06-09 01:07:20', 24, 1);
 
 --
 -- Disparadores `producto`
@@ -374,9 +363,7 @@ CREATE TABLE `proveedor` (
 --
 
 INSERT INTO `proveedor` (`codproveedor`, `proveedor`, `contacto`, `telefono`, `direccion`, `date_add`, `usuario_id`, `estatus`) VALUES
-(3, 'Mubleria Conny', 'Benlly Vilchez', 98287748, 'Gancho de Camino 1/2 c al sur', '2018-03-24 23:21:10', 1, 1),
-(12, 'Walter', 'Ing. Maria', 12345678, 'Managua', '2021-05-04 23:37:58', 1, 0),
-(13, 'Provedor0120', 'Prueba Ingresar', 87993565, 'Managua, Mercado Oriental', '2021-06-03 17:12:28', 1, 1);
+(15, 'Mubleria Conny', 'Benlly Vilchez', 86577267, 'Managua, Mercado Oriental', '2021-06-07 20:40:50', 24, 1);
 
 -- --------------------------------------------------------
 
@@ -451,10 +438,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idusuario`, `nombre`, `correo`, `usuario`, `clave`, `rol`, `estatus`) VALUES
-(1, 'Walter José Arias Anton', 'WjDeveloper@gmail.com', 'Admin', 'e10adc3949ba59abbe56e057f20f883e', 1, 1),
-(2, 'Julio Estrada', 'julio@gmail.com', 'julio0222', '81dc9bdb52d04dc20036dbd8313ed055', 3, 0),
-(9, 'María De los Ángeles  López Leyton', 'Mlopez@gmail.com', 'vendedor', 'e10adc3949ba59abbe56e057f20f883e', 3, 1),
-(20, 'José Gabriel Pavón', 'Supervisor@conny.com', 'Supervisor', 'e10adc3949ba59abbe56e057f20f883e', 2, 1);
+(24, 'Walter José Arias Anton', 'antonwalter@gmail.com', 'Admin', 'e10adc3949ba59abbe56e057f20f883e', 1, 1),
+(25, 'María de los Ángeles López Leyton', 'Mlopez@gmail.com', 'Supervisor', 'e10adc3949ba59abbe56e057f20f883e', 2, 1),
+(26, 'José Gabriel Pavón', 'pavon@gmail.com', 'Vendedor', 'e10adc3949ba59abbe56e057f20f883e', 3, 1);
 
 --
 -- Índices para tablas volcadas
@@ -494,6 +480,12 @@ ALTER TABLE `detalle_temp`
 ALTER TABLE `entradas`
   ADD PRIMARY KEY (`identrada`),
   ADD KEY `codproducto` (`codproducto`);
+
+--
+-- Indices de la tabla `estado`
+--
+ALTER TABLE `estado`
+  ADD PRIMARY KEY (`codestado`);
 
 --
 -- Indices de la tabla `factura`
@@ -545,7 +537,8 @@ ALTER TABLE `tipopago`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`idusuario`),
-  ADD KEY `rol` (`rol`);
+  ADD KEY `rol` (`rol`),
+  ADD KEY `estatus` (`estatus`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -561,43 +554,49 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT de la tabla `detallefactura`
 --
 ALTER TABLE `detallefactura`
-  MODIFY `correlativo` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `correlativo` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_temp`
 --
 ALTER TABLE `detalle_temp`
-  MODIFY `correlativo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
+  MODIFY `correlativo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=233;
 
 --
 -- AUTO_INCREMENT de la tabla `entradas`
 --
 ALTER TABLE `entradas`
-  MODIFY `identrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `identrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+
+--
+-- AUTO_INCREMENT de la tabla `estado`
+--
+ALTER TABLE `estado`
+  MODIFY `codestado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `nofactura` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `nofactura` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `codproducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `codproducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `codproveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `codproveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -621,7 +620,7 @@ ALTER TABLE `tipopago`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Restricciones para tablas volcadas
@@ -685,7 +684,8 @@ ALTER TABLE `salida_producto`
 -- Filtros para la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`rol`) REFERENCES `rol` (`idrol`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`rol`) REFERENCES `rol` (`idrol`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`estatus`) REFERENCES `estado` (`codestado`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
