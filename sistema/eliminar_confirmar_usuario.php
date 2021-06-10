@@ -75,7 +75,7 @@
 	<?php include "includes/header.php"; ?>
 	<section id="container">
 		<div class="data_delete">
-			<h2>¿Está seguro que desea desactivar el siguiente registro?</h2>
+			<h2>¿Está seguro que desea desactivar el siguiente Usuario?</h2>
 			<p>Nombre: <span><?php echo $nombre; ?></span></p>
 			<p>usuario: <span><?php echo $usuario; ?></span></p>
 			<p>Tipo Usuario: <span><?php echo $rol; ?></span></p>

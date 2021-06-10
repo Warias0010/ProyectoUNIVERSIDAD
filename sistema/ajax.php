@@ -321,11 +321,12 @@ if($_POST['action'] == 'addProductoDetalle')
              <td class="textright">'.$data['precio_venta'].'</td>
              <td class="textright">'.$precioTotal.'</td>
              <td class="">
-             <a class="link_delete" href="#" onclick="event.preventDefault(); del_product_detalle('.$data['correlativo'].');"><i class="far fa-trash-alt"></i>Eliminar</a> 
+             <a class="link_delete" href="#" onclick="event.preventDefault(); del_product_detalle('.$data['correlativo'].');"></i>Eliminar</a> 
              </td>
              </tr>
              ';
        }
+       
        $impuesto =0;
        $impuesto = round($sub_total*($iva/100),2);
        $tl_sniva= round($sub_total+$impuesto,2);
