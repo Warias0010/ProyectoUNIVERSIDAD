@@ -103,7 +103,7 @@
 					<td class="textright"><span><?php echo $tl_sniva; ?></span></td>
 				</tr>
 				<tr>
-					<td colspan="3" class="textright"><span>IVA %)</span></td>
+					<td colspan="3" class="textright"><span>IVA %</span></td>
 					<td class="textright">N/A</td>
 				</tr>
 				<tr>

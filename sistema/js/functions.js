@@ -1,4 +1,11 @@
 $(document).ready(function(){
+    //ver factura pdf
+    $('.btn_factura').click(function(e){
+      e.preventDefault();
+      var codCliente = $(this).attr('cl');
+      var nofactura = $(this).attr('f');  
+      generarPDF(codCliente,nofactura);
+    });
 
     //modal forms anular factura
     $('.anular_factura').click(function(e){
