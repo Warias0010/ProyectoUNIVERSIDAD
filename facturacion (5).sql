@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-06-2021 a las 07:25:59
+-- Tiempo de generación: 11-06-2021 a las 06:13:57
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 7.4.14
 
@@ -199,7 +199,9 @@ CREATE TABLE `cliente` (
 INSERT INTO `cliente` (`idcliente`, `nit`, `nombre`, `telefono`, `direccion`, `dateadd`, `usuario_id`, `estatus`) VALUES
 (49, '203-031191-1000T', 'Mario Alberto Arias Anton', 87992532, 'Granada,Gomper 1/2 C al oeste', '2021-06-07 20:38:43', 24, 1),
 (50, '203-031197-100T', '', 0, '', '2021-06-08 18:14:15', 24, 0),
-(51, '203-031197-100T', '', 0, '', '2021-06-08 18:14:16', 24, 0);
+(51, '203-031197-100T', '', 0, '', '2021-06-08 18:14:16', 24, 0),
+(52, '204-031120-2000V', 'Amparo López Ruiz', 25528052, 'Managua, Mercado Oriental', '2021-06-10 00:46:05', 24, 1),
+(53, '203-091599-1000F', 'Marta Elena Franco', 2147483647, 'Hotel cordoba. 2 C abajo', '2021-06-10 16:48:55', 24, 1);
 
 -- --------------------------------------------------------
 
@@ -221,7 +223,16 @@ CREATE TABLE `detallefactura` (
 
 INSERT INTO `detallefactura` (`correlativo`, `nofactura`, `codproducto`, `cantidad`, `precio_venta`) VALUES
 (39, 48, 18, 1, '8500.00'),
-(40, 49, 19, 2, '45.00');
+(40, 49, 19, 2, '45.00'),
+(41, 50, 19, 2, '45.00'),
+(42, 51, 19, 1, '45.00'),
+(43, 52, 19, 2, '45.00'),
+(44, 56, 19, 1, '45.00'),
+(45, 58, 19, 1, '55.00'),
+(46, 58, 19, 1, '55.00'),
+(48, 59, 19, 1, '55.00'),
+(49, 60, 19, 1, '55.00'),
+(50, 61, 19, 3, '55.00');
 
 -- --------------------------------------------------------
 
@@ -236,6 +247,32 @@ CREATE TABLE `detalle_temp` (
   `cantidad` int(11) NOT NULL,
   `precio_venta` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `detalle_temp`
+--
+
+INSERT INTO `detalle_temp` (`correlativo`, `token_user`, `codproducto`, `cantidad`, `precio_venta`) VALUES
+(271, '1ff1de774005f8da13f42943881c655f', 19, 1, '55.00'),
+(272, '1ff1de774005f8da13f42943881c655f', 19, 1, '55.00');
+
+--
+-- Disparadores `detalle_temp`
+--
+DELIMITER $$
+CREATE TRIGGER `before_ventas_delete` BEFORE DELETE ON `detalle_temp` FOR EACH ROW begin
+  update producto set existencia=producto.existencia+old.cantidad
+     where old.codproducto=producto.codproducto;   
+ end
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `before_ventas_insert` BEFORE INSERT ON `detalle_temp` FOR EACH ROW begin
+   update producto set existencia=producto.existencia-new.cantidad
+     where new.codproducto=producto.codproducto; 
+ END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -259,7 +296,8 @@ CREATE TABLE `entradas` (
 INSERT INTO `entradas` (`identrada`, `codproducto`, `fecha`, `cantidad`, `precio`, `usuario_id`) VALUES
 (46, 18, '2021-06-07 20:56:30', 1, '8500.00', 25),
 (47, 18, '2021-06-08 18:06:49', 2, '8500.00', 24),
-(48, 19, '2021-06-09 01:07:20', 50, '45.00', 24);
+(48, 19, '2021-06-09 01:07:20', 50, '45.00', 24),
+(49, 19, '2021-06-10 12:20:37', 10, '55.00', 24);
 
 -- --------------------------------------------------------
 
@@ -302,7 +340,15 @@ CREATE TABLE `factura` (
 
 INSERT INTO `factura` (`nofactura`, `metodopago`, `fecha`, `usuario`, `codcliente`, `totalfactura`, `estatus`) VALUES
 (48, 1, '2021-06-08 18:15:34', 24, 49, '8500.00', 1),
-(49, 1, '2021-06-09 01:10:39', 26, 49, '90.00', 1);
+(49, 1, '2021-06-09 01:10:39', 26, 49, '90.00', 2),
+(50, 1, '2021-06-10 00:43:19', 24, 49, '90.00', 2),
+(51, 1, '2021-06-10 00:44:54', 24, 49, '45.00', 2),
+(52, 1, '2021-06-10 00:46:50', 24, 52, '90.00', 2),
+(56, 1, '2021-06-10 12:17:26', 24, 49, '45.00', 2),
+(58, 1, '2021-06-10 12:29:28', 24, 49, '110.00', 2),
+(59, 1, '2021-06-10 16:44:21', 26, 49, '55.00', 2),
+(60, 1, '2021-06-10 20:08:32', 24, 49, '55.00', 2),
+(61, 1, '2021-06-10 20:15:37', 24, 49, '165.00', 2);
 
 -- --------------------------------------------------------
 
@@ -327,8 +373,8 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`codproducto`, `descripcion`, `proveedor`, `categoria`, `precio`, `existencia`, `date_add`, `usuario_id`, `estatus`) VALUES
-(18, 'Pieza Trenza Acustico 2 sillones', 15, 1, '8500.00', 2, '2021-06-07 20:56:30', 25, 1),
-(19, 'ProductosTeste1', 15, 1, '45.00', 48, '2021-06-09 01:07:20', 24, 1);
+(18, 'Pieza Trenza Acustico 2 sillones', 15, 1, '8500.00', 10, '2021-06-07 20:56:30', 25, 1),
+(19, 'ProductosTeste1', 15, 1, '55.00', 11, '2021-06-09 01:07:20', 24, 1);
 
 --
 -- Disparadores `producto`
@@ -554,25 +600,25 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT de la tabla `detallefactura`
 --
 ALTER TABLE `detallefactura`
-  MODIFY `correlativo` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `correlativo` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_temp`
 --
 ALTER TABLE `detalle_temp`
-  MODIFY `correlativo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=233;
+  MODIFY `correlativo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=273;
 
 --
 -- AUTO_INCREMENT de la tabla `entradas`
 --
 ALTER TABLE `entradas`
-  MODIFY `identrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `identrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de la tabla `estado`
@@ -584,7 +630,7 @@ ALTER TABLE `estado`
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `nofactura` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `nofactura` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`

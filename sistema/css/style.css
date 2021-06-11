@@ -115,7 +115,7 @@ header{
 }
 nav ul{
 	display: flex;
-	background: #0f0829;
+	background-image: linear-gradient(to right, #1c2c2e, #033642, #003e5c, #004375, #2c4489);
 	/*background: #05817d;*/
 	list-style: none;
 	display: -webkit-flex;
@@ -379,6 +379,7 @@ table td{
 }
 /*============ Buscador ============*/
 .form_search{
+	margin-top: 13px;
 	display: -webkit-flex;
 	display: -moz-flex;
 	display: -ms-flex;

@@ -32,7 +32,7 @@
 		<table>
 			<tr>
 			    <th>Cod_Producto</th>
-				<th>Descripcion</th>
+				<th>Producto</th>
 				<th>Proveedor</th>
 				<th>Precio</th>
 				<th>Existencia</th>

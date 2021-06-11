@@ -39,7 +39,7 @@
 		<table>
 			<tr>
 				<th>ID</th>
-				<th>Nit</th>
+				<th>Cédula</th>
 				<th>Nombre</th>
 				<th>Telefono</th>
 				<th>Direccion</th>
