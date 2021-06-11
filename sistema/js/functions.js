@@ -400,7 +400,7 @@ function anularFactura(){
             if(response=='error'){
                 $('.alertAddProduct').html('<p style="color:red;"> Error en el proceso de anular la factura.</p>');
             }else{
-                $('#row_ '+noFactura+' .estado').html('<span class="anulada">Anulada</span>');
+                $('#row_'+noFactura+' .estado').html('<span class="anulada">Anulada</span>');
                 $('#form_anular_factura .btn_ok').remove();
                 $('#row_'+noFactura+' .div_factura').html('<button type="button" class="btn_anular inactive">Anulada</button>');
                 $('.alertAddProduct').html('<p>Factura Anulada</p>');
