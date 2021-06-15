@@ -16,7 +16,7 @@ h3{
 
 }
 #container{
-	margin: 35px;
+	margin: auto;
 	padding: 15%;
 	background: #9d9fa1;
 	width: 100%;
@@ -41,9 +41,10 @@ h3{
 }
 
 .forms {
-    width: 80%;
+    width: 100%;
     padding: 40px;
     background: #f7f7f7;
+	border-radius: 5%;
 }
 #logo-header {
 	float: center;
@@ -98,9 +99,65 @@ h3{
 	font-size: 16px;
 	text-align: center;
 }
+
+/*acerca de */
+.acerca-de{
+
+    padding-top: 20px;
+    background-color: #e0e7eb;
+}
+.acerca-de h3{
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+}
+.acerca-de  p{
+    color: #040505;
+    text-align: justify;
+    padding: 15px;
+}
+ .contenedor-acerca-de{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    flex-wrap: wrap;
+	margin: 105px;
+}
+
+ .contenedor-acerca-de .card-acerca{
+    width:30%;
+    background: #333;
+    margin-top: 40px;
+    border-radius: 10px;
+    padding: 20px;
+    margin:20px;
+}
+
+.contenedor-acerca-de .card-acerca i{
+    font-size: 40px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.contenedor-acerca-de .card-acerca h4{
+    color: #fff;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.contenedor-acerca-de .card-acerca p{
+    color: #fff;
+    margin-bottom: 15px;
+    font-weight: 300;
+    text-align: justify;
+}
+/*Termina acerca de*/
 @media screen and (max-width: 800px) {
 
-  
+	.contenedor-acerca-de .card-acerca{
+        width: 90%;
+    } 
 
     .forms {
         margin: auto;
@@ -109,3 +166,5 @@ h3{
 		display: flex;
     }
 }
+
+

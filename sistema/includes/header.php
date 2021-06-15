@@ -7,7 +7,7 @@
  ?>
 	<header>
 		<div class="header">
-			<h1> Facturacion e Inventario</h1>
+			<h1> Facturación e Inventario</h1>
 			<div class="optionsBar">
 				<p>Nicaragua, <?php echo fechaC(); ?></p>
 				<span>|</span>

@@ -56,7 +56,7 @@ if(!empty($_SESSION['active']))
 <body>
 	<section id="container">
 	<div class="forms">
-	<a id="logo-header" >
+	   <a id="logo-header" >
             <span class="site-name">Muebleria Conny</span>
             <span class="site-desc">Hogar | Oficinas | Tiendas</span>
         </a> 
@@ -69,19 +69,8 @@ if(!empty($_SESSION['active']))
 		</form>
 		<div>
 		</div>	
-            <footer >
-                    <div >
-                        <div>Copyright &copy; <a target="_blank" rel="noopener noreferrer">Team FACINV</a> <?php echo date("Y"); ?></div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+		<section>
 	</section>
-
-	
 </body>
+
 </html>
