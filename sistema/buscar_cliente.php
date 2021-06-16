@@ -38,7 +38,7 @@
 
 		<table>
 			<tr>
-				<th>ID</th>
+				<th>Código cliente</th>
 				<th>Cédula</th>
 				<th>Nombre</th>
 				<th>Telefono</th>

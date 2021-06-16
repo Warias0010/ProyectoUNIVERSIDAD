@@ -24,17 +24,12 @@ $totalV = mysqli_num_rows($ventas);
     <section id="Acerca" class="acerca-de">
             <div class="contenedor-acerca-de">
             <h3>Información General</h3>
-                <div class="card-acerca">
-                    <i class="fab fa-forumbee"></i>
-                    <h4>Usuarios Activos</h4>
-                </div>
-                <div class="card-acerca">
-                    <i class="fas fa-wave-square"></i>
-                    <h4>Total Facturas</h4>
-                </div>
-                <div class="card-acerca">
-                    <i class="fas fa-low-vision"></i>
-                    <h4>Ultimas entradas</h4>
+            
+                <div class="card-acerca" class="textright">
+                    <h4>Nombre usuario:</h4>
+                    <h2><?php echo $_SESSION['nombre'];?></h2>
+                    <h4>Usuario</h4>
+                    <h2><?php echo $_SESSION['user'];?></h2>
                 </div>
             </div>
         </section>
