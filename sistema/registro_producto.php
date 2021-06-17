@@ -23,6 +23,13 @@
 			$cantidad   = $_POST['cantidad'];
 			$usuario_id  = $_SESSION['idUser'];
 
+			//valida si ya existe el producto
+			$query = mysqli_query($conection,"SELECT * FROM producto WHERE descripcion = '$producto' ");
+			$result = mysqli_fetch_array($query);
+
+			if($result > 0){
+				$alert='<span><p class="msg_error"> El producto ya existe en el sistema.</p></span>';
+			}else{
 
 				$query_insert = mysqli_query($conection,"INSERT INTO producto(proveedor,categoria,descripcion,precio,existencia,usuario_id)
 					VALUES('$proveedor','$categoria','$producto','$precio','$cantidad','$usuario_id')");
@@ -35,7 +42,7 @@
 			
 			}
 
-		
+		}
 			
 		}
 

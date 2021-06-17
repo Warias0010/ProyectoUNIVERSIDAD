@@ -13,25 +13,32 @@
 		$alert='';
 		if(empty($_POST['nombre']))
 		{
-		$alert='<p class="msg_error">Todos los campos son obligatorios.</p>';
+			$alert='<p class="msg_error">Todos los campos son obligatorios.</p>';
 		}else{
 
-			$categoria    = $_POST['nombre'];
+			$nombre = $_POST['nombre'];
 			
-			$query_insert = mysqli_query($conection,"INSERT INTO categoria(nombre)
-					VALUES('$categoria')");
-					if($query_insert){
-					$alert='<p class="msg_save">Categoría guardado correctamente.</p>';
+			$query = mysqli_query($conection,"SELECT * FROM categoria WHERE nombre = '$nombre' ");
+			$result = mysqli_fetch_array($query);
+
+			if($result > 0){
+				$alert='<p class="msg_error">La categoria ya existe en el sistema.</p>';
+			}else{
+
+				$query_insert = mysqli_query($conection,"INSERT INTO categoria(nombre)
+																	VALUES('$nombre')");
+				if($query_insert){
+					$alert='<p class="msg_save">Categoría creado correctamente.</p>';
 				}else{
-					$alert='<p class="msg_error">Error al guardar categoria.</p>';
+					$alert='<p class="msg_error">Error al crear la categoría.</p>';
 				}
-			
-			
+
 			}
 
-			
-			
+
 		}
+
+	}
 
 
 
@@ -62,12 +69,7 @@
 
 
 		</div>
-        <h1>Lista de Categorias</h1>
-		<form action="buscar_proveedor.php" method="get" class="form_search">
-			<input type="text" name="busqueda" id="busqueda" placeholder="Buscar">
-			<input type="submit" value="Buscar" class="btn_search">
-		</form>
-
+        <h1>Lista de Categorías</h1>
 		<table>
 			<tr>
 				<th>Cadigo Categoría</th>
@@ -109,11 +111,9 @@
 					<td><?php echo $data["nombre"]; ?></td>
 					
 					<td>
-						<a class="link_edit" href="editar_proveedor.php?id=<?php echo $data["codproveedor"]; ?>">Editar</a>
+						<a class="link_edit" href="editar_categoria.php?id=<?php echo $data["cod_categoria"]; ?>">Editar</a>
 						|
-						<a class="link_delete" href="eliminar_confirmar_proveedor.php?id=<?php echo $data["codproveedor"]; ?>">Eliminar</a>
-						
-				
+						<a class="link_delete" href="eliminar_confirmar_categoria.php?id=<?php echo $data["cod_categoria"]; ?>">Eliminar</a>
 						
 					</td>
 				</tr>

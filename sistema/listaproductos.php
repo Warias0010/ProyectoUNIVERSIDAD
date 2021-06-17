@@ -34,6 +34,7 @@
 			    <th>Cod_Producto</th>
 				<th>Producto</th>
 				<th>Proveedor</th>
+				<th>Categoría</th>
 				<th>Precio</th>
 				<th>Existencia</th>
 				<th>Fecha Entrada</th>
@@ -58,9 +59,11 @@
 			$desde = ($pagina-1) * $por_pagina;
 			$total_paginas = ceil($total_registro / $por_pagina);
 
-			$query = mysqli_query($conection,"SELECT p.codproducto,p.descripcion,pr.proveedor,p.precio,p.existencia,p.date_add 
-			                                FROM producto p INNER JOIN proveedor pr ON pr.codproveedor=p.proveedor
-											 WHERE 1 ORDER BY p.codproducto ASC LIMIT $desde,$por_pagina 
+			$query = mysqli_query($conection,"SELECT p.codproducto,p.descripcion,pr.proveedor,ca.nombre,p.precio,p.existencia,p.date_add 
+			                                 FROM producto p
+											 INNER JOIN proveedor pr ON pr.codproveedor=p.proveedor
+			                                 INNER JOIN categoria ca ON ca.cod_categoria = p.categoria 
+											 WHERE p.estatus = 1 ORDER BY p.codproducto  ASC LIMIT $desde,$por_pagina 
 				");
 
 			mysqli_close($conection);
@@ -75,6 +78,7 @@
 				    <td><?php echo $data["codproducto"]; ?></td>
 					<td><?php echo $data["descripcion"]; ?></td>
 					<td><?php echo $data["proveedor"]; ?></td>
+					<td><?php echo $data["nombre"]; ?></td>
 					<td class= "celPrecio">C$ <?php echo $data["precio"]; ?></td>
 					<td class= "celExistencia"> <?php echo $data["existencia"]; ?> uds.</td>
 					<td><?php echo $data["date_add"]; ?></td>
@@ -89,7 +93,7 @@
 										
 					</td>
 					<?php 
-					if ( $data['existencia'] < 10 ): echo 
+					if ( $data['existencia'] < 5 ): echo 
                 	"<td class=\"text-center\" style=\"background-color: #333; color: #ffff;\">Nivel Bajo</td>"; else: echo "<td></td>"; endif; ?>
 					<?php } ?>
 				</tr>

@@ -287,7 +287,8 @@ table tr:nth-child(odd){
 	background: rgba(0, 0, 0, 0.178);
 }
 table td{
-	padding: 10px;
+	padding: 8px;
+	margin: 15px;
 }
 .link_edit{
 	display: inline-block;
