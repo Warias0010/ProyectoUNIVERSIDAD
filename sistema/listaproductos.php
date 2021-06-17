@@ -93,7 +93,7 @@
 										
 					</td>
 					<?php 
-					if ( $data['existencia'] < 5 ): echo 
+					if ( $data['existencia'] <= 5 ): echo 
                 	"<td class=\"text-center\" style=\"background-color: #333; color: #ffff;\">Nivel Bajo</td>"; else: echo "<td></td>"; endif; ?>
 					<?php } ?>
 				</tr>

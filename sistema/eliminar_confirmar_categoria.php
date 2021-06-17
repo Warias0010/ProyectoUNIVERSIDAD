@@ -10,10 +10,9 @@
 	{
 		if(empty($_POST['cod_categoria']))
 		{
-		header("location: categoria.php");
-		mysqli_close($conection);	
+		header("location: categoria.php");	
+		mysqli_close($conection);
 		}
-		
 		$cod_categoria= $_POST['cod_categoria'];
 
 		$query_delete = mysqli_query($conection,"DELETE FROM categoria WHERE cod_categoria =$cod_categoria ");
@@ -22,6 +21,7 @@
 			header("location: categoria.php");
 		}else{
 			echo "Error al eliminar";
+			$alert='<p class="msg_error">La categoria ya existe en el sistema.</p>';
             
 		}
 

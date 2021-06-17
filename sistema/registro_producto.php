@@ -28,7 +28,7 @@
 			$result = mysqli_fetch_array($query);
 
 			if($result > 0){
-				$alert='<span><p class="msg_error"> El producto ya existe en el sistema.</p></span>';
+				$alert='<span><p class="msg_error"> El producto ya existe en el sistema.</p></span><br>';
 			}else{
 
 				$query_insert = mysqli_query($conection,"INSERT INTO producto(proveedor,categoria,descripcion,precio,existencia,usuario_id)
