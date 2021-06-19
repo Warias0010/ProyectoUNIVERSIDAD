@@ -22,7 +22,10 @@
 	<section id="container">
 		
 		<h1>Inventario De Productos</h1>
+		<?php if($_SESSION['rol']==1|| $_SESSION['rol']==2){?>
 		<a href="registro_producto.php" class="btn_new">Ingresar Nuevo Producto</a>
+		<?php } ?>
+		<a href="nueva_venta.php" class="btn_new">Realizar Factura</a>
 		
 		<form action="buscar_producto.php" method="get" class="form_search">
 			<input type="text" name="busqueda" id="busqueda" placeholder="Buscar">

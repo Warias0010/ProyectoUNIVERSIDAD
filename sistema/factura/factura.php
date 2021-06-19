@@ -68,7 +68,7 @@
 				<tr>
 					<th width="50px">Cant.</th>
 					<th class="textleft">Descripción</th>
-					<th class="textright" width="150px">Precio Unitario.</th>
+					<th class="textright" width="150px">Precio Unitario</th>
 					<th class="textright" width="150px"> Precio Total</th>
 				</tr>
 			</thead>
