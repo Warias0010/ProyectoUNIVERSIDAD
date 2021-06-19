@@ -27,7 +27,7 @@
 		<?php } ?>
 		<a href="nueva_venta.php" class="btn_new">Realizar Factura</a>
 		
-		<form action="buscar_producto.php" method="get" class="form_search">
+		<form action="buscarproducto.php" method="get" class="form_search">
 			<input type="text" name="busqueda" id="busqueda" placeholder="Buscar">
 			<input type="submit" value="Buscar" class="btn_search">
 		</form>

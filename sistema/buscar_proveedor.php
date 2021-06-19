@@ -37,6 +37,7 @@
 		<form action="buscar_proveedor.php" method="get" class="form_search">
 			<input type="text" name="busqueda" id="busqueda" placeholder="Buscar" value="<?php echo $busqueda; ?>">
 			<input type="submit" value="Buscar" class="btn_search">
+			<a href="lista_proveedor.php" class="link_delete">Eliminar búsqueda</a>
 		</form>
 
 		<table>

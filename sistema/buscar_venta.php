@@ -71,7 +71,7 @@
         <label >A</label>
         <input type="date" name="fecha_a" id="fecha_a"  value="<?php  echo $fecha_a ?>" required>
         <button type="submit" class="btn_view">Bucar</button>
-        <a href="ventas.php" class="link_delete">Eliminar Busqueda</a>
+        <a href="ventas.php" class="link_delete">Eliminar búsqueda</a>
         </form>
         </div>
 		<table>

@@ -34,6 +34,7 @@
 		<form action="buscar_cliente.php" method="get" class="form_search">
 			<input type="text" name="busqueda" id="busqueda" placeholder="Buscar" value="<?php echo $busqueda; ?>">
 			<input type="submit" value="Buscar" class="btn_search">
+			<a href="lista_clientes.php" class="link_delete">Eliminar búsqueda</a>
 		</form>
 
 		<table>
@@ -49,7 +50,7 @@
 			//Paginador
 		
 			$sql_registe = mysqli_query($conection,"SELECT COUNT(*) as total_registro FROM cliente 
-																WHERE ( idcliente LIKE '%$busqueda%' OR 
+																WHERE (idcliente LIKE '%$busqueda%' OR 
 																		nit LIKE '%$busqueda%' OR 
 																		nombre LIKE '%$busqueda%' OR 
 																		telefono LIKE '%$busqueda%' OR 
