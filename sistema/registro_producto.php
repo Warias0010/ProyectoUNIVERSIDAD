@@ -109,7 +109,7 @@
 				<input type="text" name="producto" id="producto" placeholder="Nombre del Producto">			
 				<label for="precio">Precio C$</label>
 				<input type="number" name="precio"id="precio" placeholder="Precio C$ del Producto">
-				<label for="cantidad">Cantidad</label>
+				<label for="cantidad">Cantidad </label>
 				<input type="number" name="cantidad" id="cantidad" placeholder="Cantidad del Producto">
 
 				<button type="submit" value="Guardar Producto" class="btn_save">Guardar Producto</button>

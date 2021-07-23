@@ -38,6 +38,7 @@
 					<p>Fecha: <?php echo $factura['fecha']; ?></p>
 					<p>Hora: <?php echo $factura['hora']; ?></p>
 					<p>Vendedor: <?php echo $factura['vendedor']; ?></p>
+					<p>Tipo pago: Efectivo </p>
 				</div>
 			</td>
 		</tr>
@@ -49,12 +50,12 @@
 					<span class="h3">Cliente</span>
 					<table class="datos_cliente">
 						<tr>
-							<td><label>Cedula:</label><p><?php echo $factura['nit']; ?></p></td>
-							<td><label>Teléfono:</label> <p><?php echo $factura['telefono']; ?></p></td>
+						<td><label>Cliente:</label> <p><?php echo $factura['nombre']; ?></p></td>
+						<td><label>Dirección:</label> <p><?php echo $factura['direccion']; ?></p></td>
+							
 						</tr>
 						<tr>
-							<td><label>Cliente:</label> <p><?php echo $factura['nombre']; ?></p></td>
-							<td><label>Dirección:</label> <p><?php echo $factura['direccion']; ?></p></td>
+							
 						</tr>
 					</table>
 				</div>

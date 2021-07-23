@@ -113,7 +113,7 @@ function validar_cedula() {
 				<label for="telefono">Teléfono</label>
 				<input type="number" name="telefono" id="telefono" pattern="?\d{8}" minlength="8" maxlength="8" required title="Formato: 84860397" placeholder="Teléfono" maxlength="8" required >
 				<label for="direccion">Dirección</label>
-				<input type="text" name="direccion" id="direccion" placeholder="direccion completa">
+				<input type="text" name="direccion" id="ireccion" placeholder="Dirección">
 				
 				<input type="submit" value="Guardar Cliente" class="btn_save">
 

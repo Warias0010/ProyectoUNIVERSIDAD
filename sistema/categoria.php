@@ -69,10 +69,17 @@
 
 
 		</div>
+		<div>
+		<form action="buscarcategoria.php" method="get" class="form_search">
+			<input type="text" name="busqueda" id="busqueda" placeholder="Buscar Categoría">
+			<input type="submit" value="Buscar" class="btn_search">
+		</form>
+		</div>
+		<br>
         <h1>Lista de Categorías</h1>
 		<table>
 			<tr>
-				<th>Cadigo Categoría</th>
+				<th>Código Categoría</th>
 				<th>Nombre</th>
 				<th>Acciones</th>
 			</tr>

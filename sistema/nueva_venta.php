@@ -22,7 +22,7 @@ include "../conexion.php";
         <div class="datos_cliente">
             <div class="action_cliente">
                 <h4>Datos Del Cliente</h4>
-                <a href="#" class="btn_new btn_new_cliente"><i class="fas fa-plus"></i>Nuevo Cliente</a>
+               <!-- <a href="#" class="btn_new btn_new_cliente"><i class="fas fa-plus"></i>Nuevo Cliente</a>-->
             </div>
             <form id="form_new_cliente_venta" name="form_new_cliente_venta"  class="datos">
                 <input type="hidden" name="action" value="addCliente">
