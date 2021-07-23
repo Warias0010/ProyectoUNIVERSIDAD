@@ -102,21 +102,21 @@
 	<section id="container">
 		
 		<div class="form_register">
-			<h1>Actualizar cliente</h1>
+			<br>
+			<h1>Actualizar Información</h1>
 			<hr>
 			<div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div>
 
 			<form action="" method="post">
 				<input type="hidden" name="id" value="<?php echo $idcliente; ?>">
-				<label for="nit">Cedula</label>
-				<input type="text" name="nit" id="nit" maxlength="16" placeholder="Cedula de cliente" value="<?php echo $nit; ?>">
-
+				<label for="nit">Cédula</label>
+				<input type="text" name="nit" id="nit" pattern="\d{3}-?\d{6}-?\d{4}\w" maxlength="16" required title="Formato: 021-210494-1000T" placeholder="Cedula de cliente" value="<?php echo $nit; ?>">
 				<label for="nombre">Nombre</label>
 				<input type="text" name="nombre" id="nombre" placeholder="Nombre completo"value="<?php echo $nombre; ?>">
 			
-				<label for="telefono">Telefono</label>
-				<input type="number" name="telefono" id="telefono" placeholder="Telefono"value="<?php echo $telefono; ?>">
-				<label for="direccion">Direccion</label>
+				<label for="telefono">Teléfono</label>
+				<input type="number" name="telefono" id="telefono" pattern="?\d{8}" maxlength="8" required title="Formato: 84860397"  placeholder="Telefono" value="<?php echo $telefono; ?>">
+				<label for="direccion">Dirección</label>
 				<input type="text" name="direccion" id="direccion" placeholder="direccion completa"value="<?php echo $direccion; ?>">
 				
 				<input type="submit" value="Actualizar Cliente" class="btn_save">

@@ -55,7 +55,6 @@
 						<li><a href="registro_producto.php">Nuevo Producto</a></li>
 						<li><a href="listaproductos.php">Lista de Productos</a></li>
 						<li><a href="Listarentradas.php">Entradas a Inventario</a></li>
-						<li><a href="salida_producto.php">Salida de productos</a></li>
 						<li><a href="categoria.php">Categorías</a></li>
 						<li><a href="lista_salida.php">Salida de Productos</a></li>
 						<?php }  ?>

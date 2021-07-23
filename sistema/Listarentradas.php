@@ -24,7 +24,7 @@
 		<h1>Ultimas Entradas a Inventario</h1>
 		<a href="listaproductos.php" class="btn_new">Agregar Nueva Entrada</a>
 		
-		<form action="buscar_entrada.php" method="get" class="form_search">
+		<form action="buscar_entradaproducto.php" method="get" class="form_search">
 			<input type="text" name="busqueda" id="busqueda" placeholder="Buscar">
 			<input type="submit" value="Buscar" class="btn_search">
 		</form>

@@ -39,7 +39,7 @@
 				{
 
 					$sql_update = mysqli_query($conection,"UPDATE usuario
-															SET nombre = '$nombre', correo='$email',usuario='$user', clave='$clave',rol='$rol'
+															SET nombre = '$nombre', correo='$email',usuario='$user',rol='$rol'
 															WHERE idusuario= $idUsuario ");
 				}else{
 					$sql_update = mysqli_query($conection,"UPDATE usuario
@@ -87,6 +87,7 @@
 			$nombre  = $data['nombre'];
 			$correo  = $data['correo'];
 			$usuario = $data['usuario'];
+			//$clave=$data['clave'];
 			$idrol   = $data['idrol'];
 			$rol     = $data['rol'];
 

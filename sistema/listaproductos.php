@@ -92,7 +92,7 @@
 						|
 						<a class="link_edit" href="editar_productos.php?id=<?php echo $data["codproducto"]; ?>">Editar</a>
 						 |
-						<a class="link_delete del_product" href="#" product="<?php echo $data["codproducto"];?>">Eliminar</a>
+						<a class="link_delete del_product" href="eliminar_producto.php?id=<?php echo $data["codproducto"]; ?>">Eliminar</a>
 										
 					</td>
 					<?php 

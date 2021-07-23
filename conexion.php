@@ -2,8 +2,8 @@
 	
 	$host = 'localhost';
 	$user = 'root';
-	$password = '';
-	$db = 'facturacion';
+	$password = '12345678';
+	$db = 'facinvconny';
 
 	$conection = @mysqli_connect($host,$user,$password,$db);
 

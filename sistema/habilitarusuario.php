@@ -75,10 +75,12 @@
 	<?php include "includes/header.php"; ?>
 	<section id="container">
 		<div class="data_delete">
+			
 			<h2>¿Está seguro que desea Activar el Usuario?</h2>
-			<p>Nombre: <span><?php echo $nombre; ?></span></p>
-			<p>NOmbre Usuario: <span><?php echo $usuario; ?></span></p>
-			<p>Tipo Usuario: <span><?php echo $rol; ?></span></p>
+			<br>
+			<p>Nombre del usuario: <span><?php echo $nombre; ?></span></p>
+			<p>Nombre usuario: <span><?php echo $usuario; ?></span></p>
+			<p>Rol del usuario: <span><?php echo $rol; ?></span></p>
 
 			<form method="post" action="">
 				<input type="hidden" name="idusuario" value="<?php echo $idusuario; ?>">

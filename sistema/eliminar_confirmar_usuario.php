@@ -75,10 +75,11 @@
 	<?php include "includes/header.php"; ?>
 	<section id="container">
 		<div class="data_delete">
-			<h2>¿Está seguro que desea desactivar el siguiente Usuario?</h2>
-			<p>Nombre: <span><?php echo $nombre; ?></span></p>
-			<p>usuario: <span><?php echo $usuario; ?></span></p>
-			<p>Tipo Usuario: <span><?php echo $rol; ?></span></p>
+			<h2>¿Está seguro que desea desactivar el siguiente usuario del sistema?</h2>
+			<br>
+			<p>Nombre del usuario: <span><?php echo $nombre; ?></span></p>
+			<p>Usuario: <span><?php echo $usuario; ?></span></p>
+			<p>Rol del usuario: <span><?php echo $rol; ?></span></p>
 
 			<form method="post" action="">
 				<input type="hidden" name="idusuario" value="<?php echo $idusuario; ?>">

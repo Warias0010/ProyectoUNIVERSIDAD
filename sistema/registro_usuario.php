@@ -33,6 +33,7 @@
 																	VALUES('$nombre','$email','$user','$clave','$rol')");
 				if($query_insert){
 					$alert='<p class="msg_save">Usuario creado correctamente.</p>';
+	
 				}else{
 					$alert='<p class="msg_error">Error al crear el usuario.</p>';
 				}
@@ -65,7 +66,7 @@
 			<div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div>
 
 			<form action="" method="post">
-				<label for="nombre">Nombre</label>
+				<label for="nombre">Nombre </label>
 				<input type="text" name="nombre" id="nombre" placeholder="Nombre completo">
 				<label for="correo">Correo electrónico</label>
 				<input type="email" name="correo" id="correo" placeholder="Correo electrónico">
@@ -73,7 +74,7 @@
 				<input type="text" name="usuario" id="usuario" placeholder="Usuario">
 				<label for="clave">Clave</label>
 				<input type="password" name="clave" id="clave" placeholder="Clave de acceso">
-				<label for="rol">Tipo Usuario</label>
+				<label for="rol">Seleccione usuario </label>
 
 				<?php 
 
@@ -107,5 +108,6 @@
 
 	</section>
 	<?php include "includes/footer.php"; ?>
+	
 </body>
 </html>
