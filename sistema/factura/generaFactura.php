@@ -63,7 +63,7 @@
 		    $html = ob_get_clean();
 
 			// instantiate and use the dompdf class
-			$dompdf = new Dompdf();
+			$dompdf = new DomPDF();
 
 			$dompdf->loadHtml($html);
 			// (Optional) Setup the paper size and orientation

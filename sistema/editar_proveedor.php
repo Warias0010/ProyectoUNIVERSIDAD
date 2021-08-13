@@ -101,10 +101,10 @@
 				<label for="contacto">Contacto</label>
 				<input type="text" name="contacto" id="contacto" placeholder="Nombre completo de contacto" value = "<?php echo $contacto ?>" >
 			
-				<label for="telefono">Telefono</label>
-				<input type="number" name="telefono" id="telefono" placeholder="Telefono" value = "<?php echo $telefono ?>" >
-				<label for="direccion">Direccion</label>
-				<input type="text" name="direccion" id="direccion" placeholder="direccion completa" value = "<?php echo $direccion ?>" >
+				<label for="telefono">Teléfono</label>
+				<input type="number" name="telefono" id="telefono" placeholder="Teléfono" value = "<?php echo $telefono ?>" >
+				<label for="direccion">Dirección</label>
+				<input type="text" name="direccion" id="direccion" placeholder="Dirección completa" value = "<?php echo $direccion ?>" >
 				
 				<input type="submit" value="Actualizar proveedor" class="btn_save">
 

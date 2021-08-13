@@ -30,8 +30,8 @@
 				<th>Código Cliente</th>
 				<th>Cédula</th>
 				<th>Nombre</th>
-				<th>telefono</th>
-				<th>direccion</th>
+				<th>Teléfono</th>
+				<th>Dirección</th>
 				<th>Acciones</th>
 			</tr>
 		<?php 
@@ -73,7 +73,9 @@
 					<td><?php echo $nit; ?></td>
 					<td><?php echo $data["nombre"]; ?></td>
 					<td><?php echo $data["telefono"]; ?></td>
-					<td><?php echo $data["direccion"]; ?></td>
+					<td style=" width: 150px;
+  height: 80px;
+  overflow: hidden;"><?php echo $data["direccion"]; ?></td>
 					<td>
 						<a class="link_edit" href="editar_cliente.php?id=<?php echo $data["idcliente"]; ?>">Editar</a>
 					<?php if($_SESSION['rol']==1|| $_SESSION['rol']==2){?>

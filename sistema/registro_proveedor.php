@@ -65,10 +65,10 @@
 				<label for="contacto">Contacto</label>
 				<input type="text" name="contacto" id="contacto" placeholder="Nombre completo de contacto">
 			
-				<label for="telefono">Telefono</label>
-				<input type="number" name="telefono" id="telefono" placeholder="Telefono">
-				<label for="direccion">Direccion</label>
-				<input type="text" name="direccion" id="direccion" placeholder="direccion completa">
+				<label for="telefono">Teléfono</label>
+				<input type="tel" name="telefono" id="telefono" pattern="[0-9]{8}" placeholder="Teléfono">
+				<label for="direccion">Dirección</label>
+				<input type="text" name="direccion" id="direccion" placeholder="Dirección ">
 				
 				<input type="submit" value="Guardar proveedor" class="btn_save">
 

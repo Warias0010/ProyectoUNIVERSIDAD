@@ -274,6 +274,8 @@ table{
 	font-size: 12pt;
 	font-family: 'arial';
 	width: 100%;
+	overflow: hidden;
+	
 }
 table th {
 	text-align: left;
@@ -281,6 +283,7 @@ table th {
 	background: #3d7ba8;
 	color:#fff;
 	border:  1px solid #AAAAAA;
+	overflow: hidden;
 	
 }
 table tr:nth-child(odd){
@@ -289,6 +292,7 @@ table tr:nth-child(odd){
 table td{
 	padding: 8px;
 	margin: 15px;
+	
 }
 .link_edit{
 	display: inline-block;

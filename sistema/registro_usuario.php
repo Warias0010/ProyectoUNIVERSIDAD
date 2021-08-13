@@ -61,6 +61,7 @@
 	<section id="container">
 		
 		<div class="form_register">
+			<br>
 			<h1>Registro usuario</h1>
 			<hr>
 			<div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div>

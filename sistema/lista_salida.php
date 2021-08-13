@@ -21,7 +21,7 @@ include "../conexion.php";
     <?php include "includes/header.php"; ?>
 
     <section id="container">
-
+        <br>
     <h1>Salida de productos</h1>
 
     <table>

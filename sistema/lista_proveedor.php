@@ -31,11 +31,11 @@
 
 		<table>
 			<tr>
-				<th>ID</th>
+				<th>Código</th>
 				<th>Proveedor</th>
 				<th>Contacto</th>
-				<th>telefono</th>
-				<th>direccion</th>
+				<th>Teléfono</th>
+				<th>Dirección</th>
 				<th>Fecha</th>
 				<th>Acciones</th>
 			</tr>
