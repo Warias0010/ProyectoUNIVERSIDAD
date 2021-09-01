@@ -22,7 +22,7 @@
 			<td class="info_empresa">
 				<div>
 				<span class="h2">SUPER GANGAS "CONNY"</span>
-					<p>Les Ofresco de todo para su hogar, calidad y siempre con los precios más bajos.</p>
+					<p>Les ofrece de todo para su hogar, calidad y siempre con los precios más bajos.</p>
 					<p>Managua,NIC Gancho de camino 1 1/2 C. arriba</p>
 					<p>Cel: +(505) 8834-6162 Tel. +(505) 2248-4285 </p>
 					<p>Email: franchezco@gmail.com</p>
@@ -100,7 +100,7 @@
 			</tbody>
 			<tfoot id="detalle_totales">
 				<tr>
-					<td colspan="3" class="textright"><span>SUBTOTAL C$.</span></td>
+					<td colspan="3" class="textright"><span>SUBTOTAL C$ </span></td>
 					<td class="textright"><span><?php echo $tl_sniva; ?></span></td>
 				</tr>
 				<tr>
@@ -108,7 +108,7 @@
 					<td class="textright">N/A</td>
 				</tr>
 				<tr>
-					<td colspan="3" class="textright"><span>TOTAL C$.</span></td>
+					<td colspan="3" class="textright"><span>TOTAL C$ </span></td>
 					<td class="textright"><span><?php echo $total; ?></span></td>
 				</tr>
 		</tfoot>

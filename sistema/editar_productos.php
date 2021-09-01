@@ -23,14 +23,14 @@
 			$usuario_id  = $_SESSION['idUser'];
 
 			//valida si ya existe el mismo nombre del producto			
-			$query = mysqli_query($conection,"SELECT * FROM producto 
-			                               WHERE descripcion ='$producto' ");
-			$result = mysqli_fetch_array($query);
+		//	$query = mysqli_query($conection,"SELECT * FROM producto 
+			    //                           WHERE descripcion ='$producto' ");
+			// $result = mysqli_fetch_array($query);
 			
-			if($result > 0){
-				$alert='<p class="msg_error">El nombre asigando ya existe en el sistema.</p>';
-			}
-			else{  
+		//	if($result > 0){
+			//	$alert='<p class="msg_error">El nombre asigando ya existe en el sistema.</p>';
+			//}
+			//else{  
 				$query_update = mysqli_query($conection,"UPDATE producto
 				                    SET descripcion= '$producto',
 				                        proveedor=$proveedor,
@@ -43,7 +43,7 @@
 				}else{
 					$alert='<p class="msg_error">Error al actualizar el producto.</p>';
 				}
-			}
+			//}
 			}
 		}
 //validar producto

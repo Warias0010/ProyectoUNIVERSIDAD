@@ -48,9 +48,12 @@ include "../conexion.php";
         $desde=($pagina-1) * $por_pagina;
         $total_paginas= ceil($total_registro / $por_pagina);
 
-        $query= mysqli_query($conection,"SELECT d.correlativo, d.nofactura, p.descripcion
-         AS Descripcion_producto, d.cantidad, d.precio_venta FROM detallefactura d
-          INNER JOIN producto p ON d.codproducto = p.codproducto ORDER BY d.correlativo
+        $query= mysqli_query($conection,"SELECT d.correlativo, d.nofactura, p.descripcion 
+                                         AS Descripcion_producto, d.cantidad, d.precio_venta 
+                                         FROM detallefactura d 
+                                         INNER JOIN producto p ON d.codproducto = p.codproducto 
+                                         INNER JOIN factura f ON d.nofactura = f.nofactura 
+                                         WHERE f.estatus = 1 ORDER BY d.correlativo
            DESC LIMIT $desde,$por_pagina ");
 
           mysqli_close($conection);
