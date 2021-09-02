@@ -32,7 +32,7 @@ h3{
   </style>
 </head>
 <body>
-    <h2>Modulo no encontrada</h2>
+    <h2>Módulo no encontrada</h2>
     <img src="404.svg" alt="Error 404">
     <div>
     <a href="./" class= "btn">Retornar al sistema </a></div>
