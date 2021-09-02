@@ -1,6 +1,6 @@
 <?php 
 	session_start();
-	if($_SESSION['rol'] != 1)
+	if($_SESSION['rol'] != 1 and $_SESSION['rol'] != 2)
 	{
 		header("location: ./");
 	}
