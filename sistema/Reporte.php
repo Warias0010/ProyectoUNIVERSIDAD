@@ -29,8 +29,7 @@
         <button type="submit" class="btn_view">Bucar</button>
         </form>
         <form >
-        <button href="reportegeneral.php" class="btn_view ">Generar reporte General</button>
-        <button type="submit" class="btn_view">Imprimir reporte de facturas anuladas</button>
+			<a href="reportegeneral.php" class="btn_view " target="_blank">Generar reporte general </a>
         </form>
         <br>
         </div>

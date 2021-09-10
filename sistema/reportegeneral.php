@@ -22,10 +22,11 @@ function Header()
     $this->Ln(20);
 
     $this->Cell(30,10,'Factura',1,0,'C',0);
-	$this->Cell(30,10,'Pago',1,0,'C',0);
+	$this->Cell(20,10,'Pago',1,0,'C',0);
 	$this->Cell(50,10,utf8_decode('Fecha Emisión'),1,0,'C',0);
     $this->Cell(50,10,utf8_decode('Cliente'),1,0,'C',0);
 	$this->Cell(40,10,utf8_encode('Vendedor'),1,0,'C',0);
+    $this->Cell(30,10,utf8_encode('Estado'),1,0,'C',0);
     $this->Cell(40,10,'Total Factura',1,1,'C',0);
   
 }
@@ -56,7 +57,7 @@ INNER JOIN usuario u
 ON f.usuario = u.idusuario
 INNER JOIN cliente cl
 ON f.codcliente= cl.idcliente
-WHERE f.estatus !=10 ";
+WHERE f.estatus !=10  ORDER BY f.fecha";
 $resultado = mysqli_query($conexion, $consulta);
 
 $pdf = new PDF();
@@ -66,13 +67,18 @@ $pdf->AddPage('LANSCAPE', 'Letter');
 $pdf->SetFont('Arial','B',10);
 
 while ($row=$resultado->fetch_assoc()) {
-
+        if($row["estatus"]==1){
+            $estado = 'Pagada';
+        }else{
+         $estado = 'Anulada';
+        }
 	$pdf->Cell(30,10,$row['nofactura'],1,0,'C',0);
-	$pdf->Cell(30,10,$row['pago'],1,0,'C',0);
+	$pdf->Cell(20,10,$row['pago'],1,0,'C',0);
 	$pdf->Cell(50,10,$row['fecha'],1,0,'C',0);
     $pdf->Cell(50,10,utf8_decode($row['cliente']),1,0,'C',0);
 	$pdf->Cell(40,10, utf8_decode($row['vendedor']) ,1,0,'C',0);
-   $pdf->Cell(40,10,$row['totalfactura'],1,1,'C',0);
+    $pdf->Cell(30,10, $estado,1,0,'C',0);
+     $pdf->Cell(40,10,$row['totalfactura'],1,1,'C',0);
 
 } 
 

@@ -57,8 +57,7 @@
 						<li><a href="Listarentradas.php">Entradas a Inventario</a></li>
 						<li><a href="categoria.php">Categorías</a></li>
 						<li><a href="lista_salida.php">Salida de Productos</a></li>
-						<li><a href="Reporte.php" style="background-color:#333">Reportes de ventas</a>
-					</li>
+						<li><a href="Reporte.php" style="background-color:#333">Reportes de ventas</a></li>
 						<?php }  ?>
 
 						<?php 
