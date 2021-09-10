@@ -56,8 +56,7 @@
 	<?php include "includes/header.php"; ?>
 	<section id="container">
 		
-		<h1>Lista de facturas</h1>
-		<a href="nueva_venta.php" class="btn_new"> Nueva Factura</a>
+		<h1>Reportes</h1>
 		
 		<form action="buscar_venta.php" method="get" class="form_search">
 			<input type="text" name="busqueda" id="busqueda" placeholder="No. Factura" value="<?php  echo $busqueda?>">
@@ -71,8 +70,10 @@
         <label >A</label>
         <input type="date" name="fecha_a" id="fecha_a"  value="<?php  echo $fecha_a ?>" required>
         <button type="submit" class="btn_view">Bucar</button>
-        <a href="ventas.php" class="link_delete">Eliminar búsqueda</a>
-		
+        <a href="Reporte.php" class="link_delete">Eliminar búsqueda</a>
+        </form>
+        <form>
+        <button type="" class="btn_view">Imprimir reporte solicitado</button>
         </form>
         </div>
 		<table>

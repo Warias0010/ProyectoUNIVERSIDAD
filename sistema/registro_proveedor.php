@@ -59,7 +59,17 @@
 			<div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div>
 
 			<form action="" method="post">
+			<label for="proveedor" style="background-color:#2a479e; font-size: 11pt;
+    background: #333;
+    padding: 10px;
+    color: #FFF;
+    letter-spacing: 1px;
+    border: 0;
+    cursor: pointer;
+    margin: 7px auto;">RUC o Cedúla</label>
+				<input type="text" name="proveedor" id="proveedor" placeholder="Nombre del proveedor">
 				<label for="proveedor">Nombre del proveedor</label>
+
 				<input type="text" name="proveedor" id="proveedor" placeholder="Nombre del proveedor">
 
 				<label for="contacto">Contacto</label>

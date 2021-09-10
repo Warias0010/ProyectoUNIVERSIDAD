@@ -57,7 +57,7 @@ if(!empty($_SESSION['active']))
 	<section id="container">
 	<div class="forms">
 	   <a id="logo-header" >
-            <span class="site-name">Muebleria Conny</span>
+            <span class="site-name">Mueblería Super Gangas Conny</span>
             <span class="site-desc">Hogar | Oficinas | Tiendas</span>
         </a> 
 		<form action="" method="post">		

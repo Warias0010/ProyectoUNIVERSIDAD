@@ -1,6 +1,6 @@
 $(document).ready(function(){
-    //validar cedula
-    
+    //validar reporte
+
     //ver factura pdf
     $('.btn_factura').click(function(e){
       e.preventDefault();
