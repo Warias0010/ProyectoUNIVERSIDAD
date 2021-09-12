@@ -73,7 +73,7 @@
         <a href="Reporte.php" class="link_delete">Eliminar búsqueda</a>
         </form>
         <form>
-        <button type="" class="btn_view">Imprimir reporte solicitado</button>
+		<a href="reporteporfecha.php" target="_blank" class="btn_view">Generar reporte solicitado</a>
         </form>
         </div>
 		<table>
