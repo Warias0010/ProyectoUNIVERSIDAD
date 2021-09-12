@@ -11,11 +11,11 @@
 	if(!empty($_POST))
 	{
 		$alert='';
-		if(empty($_POST['proveedor']) ||empty($_POST['contacto']) || empty($_POST['telefono']) || empty($_POST['direccion']))
+		if(empty($_POST['cedula']) ||empty($_POST['proveedor']) ||empty($_POST['contacto']) || empty($_POST['telefono']) || empty($_POST['direccion']))
 		{
 		$alert='<p class="msg_error">Todos los campos son obligatorios.</p>';
 		}else{
-
+			$cedula    = $_POST['cedula'];
 			$proveedor    = $_POST['proveedor'];
 			$contacto = $_POST['contacto'];
 			$telefono  = $_POST['telefono'];
@@ -23,8 +23,8 @@
 			$usuario_id  = $_SESSION['idUser'];
 
 
-				$query_insert = mysqli_query($conection,"INSERT INTO proveedor(proveedor,contacto,telefono,direccion,usuario_id)
-					VALUES('$proveedor','$contacto','$telefono','$direccion','$usuario_id')");
+				$query_insert = mysqli_query($conection,"INSERT INTO proveedor(cedula,proveedor,contacto,telefono,direccion,usuario_id)
+					VALUES('$cedula','$proveedor','$contacto','$telefono','$direccion','$usuario_id')");
 					if($query_insert){
 					$alert='<p class="msg_save">proveedor guardado correctamente.</p>';
 				}else{
@@ -67,13 +67,13 @@
     border: 0;
     cursor: pointer;
     margin: 7px auto;">RUC o Cedúla</label>
-				<input type="text" name="proveedor" id="proveedor" placeholder="Nombre del proveedor">
-				<label for="proveedor">Nombre del proveedor</label>
+				<input type="text" name="cedula" id="cedula" placeholder="Ingresar datos solicitado">
 
+				<label for="proveedor">Proveedor</label>
 				<input type="text" name="proveedor" id="proveedor" placeholder="Nombre del proveedor">
 
 				<label for="contacto">Contacto</label>
-				<input type="text" name="contacto" id="contacto" placeholder="Nombre completo de contacto">
+				<input type="text" name="contacto" id="contacto" placeholder="Nombre del contacto">
 			
 				<label for="telefono">Teléfono</label>
 				<input type="tel" name="telefono" id="telefono" pattern="[0-9]{8}" placeholder="Teléfono">

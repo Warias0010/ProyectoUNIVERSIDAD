@@ -32,6 +32,7 @@
 		<table>
 			<tr>
 				<th>Código</th>
+				<th>RUC o Cedúla</th>
 				<th>Proveedor</th>
 				<th>Contacto</th>
 				<th>Teléfono</th>
@@ -71,6 +72,7 @@
 			?>
 				<tr>
 					<td><?php echo $data["codproveedor"]; ?></td>
+					<td><?php echo $data["cedula"]; ?></td>
 					<td><?php echo $data["proveedor"]; ?></td>
 					<td><?php echo $data["contacto"]; ?></td>
 					<td><?php echo $data["telefono"]; ?></td>

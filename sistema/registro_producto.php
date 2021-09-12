@@ -106,7 +106,16 @@
 				 ?>
 				</select>			
 				<label for="producto">Producto</label>
-				<input type="text" name="producto" id="producto" placeholder="Nombre del Producto">			
+				<input type="text" name="producto" id="producto" placeholder="Nombre del Producto">	
+				<label for="producto" style="background-color:#2a479e; font-size: 11pt;
+    background: #333;
+    padding: 10px;
+    color: #FFF;
+    letter-spacing: 1px;
+    border: 0;
+    cursor: pointer;
+    margin: 7px auto;">Descripción</label>
+				<input type="text" name="producto" id="producto" placeholder="Descripción del Producto">			
 				<label for="precio">Precio C$</label>
 				<input type="number" name="precio"id="precio" placeholder="Precio C$ del Producto">
 				<label for="cantidad">Cantidad </label>
