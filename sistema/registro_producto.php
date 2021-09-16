@@ -11,7 +11,7 @@
 	if(!empty($_POST))
 	{
 		$alert='';
-		if(empty($_POST['proveedor']) ||empty($_POST['producto']) ||empty($_POST['precio']) ||($_POST['precio'])<= 0 || empty($_POST['cantidad'])|| ($_POST['cantidad'])<= 0)
+		if(empty($_POST['proveedor']) ||empty($_POST['producto'])||empty($_POST['precio']) ||($_POST['precio'])<= 0 || empty($_POST['cantidad'])|| ($_POST['cantidad'])<= 0)
 		{
 		$alert='<p class="msg_error">Todos los campos son obligatorios.</p>';
 		}else{
@@ -19,6 +19,7 @@
 			$proveedor    = $_POST['proveedor'];
 			$categoria    = $_POST['categoria'];
 			$producto = $_POST['producto'];
+			$detalle = $_POST['detalle'];
 			$precio  = $_POST['precio'];
 			$cantidad   = $_POST['cantidad'];
 			$usuario_id  = $_SESSION['idUser'];
@@ -31,8 +32,8 @@
 				$alert='<span><p class="msg_error"> El producto ya existe en el sistema.</p></span><br>';
 			}else{
 
-				$query_insert = mysqli_query($conection,"INSERT INTO producto(proveedor,categoria,descripcion,precio,existencia,usuario_id)
-					VALUES('$proveedor','$categoria','$producto','$precio','$cantidad','$usuario_id')");
+				$query_insert = mysqli_query($conection,"INSERT INTO producto(proveedor,categoria,descripcion,detalle,precio,existencia,usuario_id)
+					VALUES('$proveedor','$categoria','$producto','$detalle','$precio','$cantidad','$usuario_id')");
 					if($query_insert){
 					$alert='<p class="msg_save">Producto guardado correctamente.</p>';
 				}else{
@@ -113,9 +114,9 @@
     color: #FFF;
     letter-spacing: 1px;
     border: 0;
-    cursor: pointer;
     margin: 7px auto;">Descripción</label>
-				<input type="text" name="producto" id="producto" placeholder="Descripción del Producto">			
+				<input type="text" name="detalle" id="detalle" placeholder="Descripción del Producto">	
+
 				<label for="precio">Precio C$</label>
 				<input type="number" name="precio"id="precio" placeholder="Precio C$ del Producto">
 				<label for="cantidad">Cantidad </label>

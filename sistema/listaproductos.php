@@ -36,6 +36,7 @@
 			<tr>
 			    <th>Cod_Producto</th>
 				<th>Producto</th>
+				<th>Detalle</th>
 				<th>Proveedor</th>
 				<th>Categoría</th>
 				<th>Precio</th>
@@ -62,7 +63,7 @@
 			$desde = ($pagina-1) * $por_pagina;
 			$total_paginas = ceil($total_registro / $por_pagina);
 
-			$query = mysqli_query($conection,"SELECT p.codproducto,p.descripcion,pr.proveedor,ca.nombre,p.precio,p.existencia,p.date_add 
+			$query = mysqli_query($conection,"SELECT p.codproducto,p.descripcion,p.detalle,pr.proveedor,ca.nombre,p.precio,p.existencia,p.date_add 
 			                                 FROM producto p
 											 INNER JOIN proveedor pr ON pr.codproveedor=p.proveedor
 			                                 INNER JOIN categoria ca ON ca.cod_categoria = p.categoria 
@@ -80,6 +81,7 @@
 				<tr class= "row"<?php echo $data["codproducto"]; ?> >
 				    <td><?php echo $data["codproducto"]; ?></td>
 					<td><?php echo $data["descripcion"]; ?></td>
+					<td><?php echo $data["detalle"]; ?></td>
 					<td><?php echo $data["proveedor"]; ?></td>
 					<td><?php echo $data["nombre"]; ?></td>
 					<td class= "celPrecio">C$ <?php echo $data["precio"]; ?></td>

@@ -18,6 +18,7 @@
 
 			$codproducto = $_POST['id'];
 			$proveedor    = $_POST['proveedor'];
+			$detalle  =  $_POST['detalle'];
 			$categoria    = $_POST['categoria'];
 			$producto = $_POST['producto'];
 			$usuario_id  = $_SESSION['idUser'];
@@ -33,6 +34,7 @@
 			//else{  
 				$query_update = mysqli_query($conection,"UPDATE producto
 				                    SET descripcion= '$producto',
+									    detalle='$detalle',
 				                        proveedor=$proveedor,
 										categoria=$categoria,
 										usuario_id=$usuario_id
@@ -56,7 +58,7 @@ header("location: listaproductos.php");
 	if(!is_numeric($id_producto)){
 		header("location: listaproductos.php");
 	}
-	$query_producto = mysqli_query($conection,"SELECT p.codproducto,p.descripcion,pr.codproveedor,pr.proveedor,ca.cod_categoria,ca.nombre,p.precio,p.existencia,p.date_add 
+	$query_producto = mysqli_query($conection,"SELECT p.codproducto,p.descripcion,p.detalle,pr.codproveedor,pr.proveedor,ca.cod_categoria,ca.nombre,p.precio,p.existencia,p.date_add 
 	                                            FROM producto p
 	                                            INNER JOIN proveedor pr ON pr.codproveedor=p.proveedor
 	                                            INNER JOIN categoria ca ON ca.cod_categoria = p.categoria 
@@ -135,7 +137,9 @@ header("location: listaproductos.php");
 				 ?>
 				</select>			
 				<label for="producto">Producto</label>
-				<input type="text" name="producto" id="producto" placeholder="Nombre del Producto" value="<?php echo $data_producto['descripcion']?>">	
+				<input type="text" name="producto" id="producto" placeholder="Nombre del Producto" value="<?php echo $data_producto['descripcion']?>">
+				<label for="detalle">Detalle del producto</label>
+				<input type="text" name="detalle" id="detalle" placeholder="Detalle del Producto" value="<?php echo $data_producto['detalle']?>">	
 				<label for="precio">Existencia en uds.</label>
 				<input type="number" name="cantidad"id="cantidad" placeholder="cantidad de Producto" value="<?php echo $data_producto['existencia']?>" disabled>		
 				<label for="precio">Precio C$</label>

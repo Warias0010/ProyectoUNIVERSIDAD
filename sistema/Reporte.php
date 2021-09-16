@@ -21,15 +21,16 @@
 		<br>
         <div >
         <h5>Buscar por fecha</h5>
-        <form action="buscarreporte.php" method="get" class="form_search_date">
+        <form action="reporteporfecha.php" method="get" class="form_search_date" target="_blank">
         <label >De: </label>
         <input type="date" name="fecha_de" id="fecha_de" required>
         <label >A</label>
         <input type="date" name="fecha_a" id="fecha_a" required>
-        <button type="submit" class="btn_view">Bucar</button>
+        <button  type="submit" class="btn_view" target="_blank">Generar Reporte por Fecha</button>
         </form>
         <form >
 			<a href="reportegeneral.php" class="btn_view " target="_blank">Generar reporte general </a>
+            <a href="reportefacanulada.php" class="btn_view " target="_blank">Generar reporte facturas anuladas </a>
         </form>
         <br>
         </div>

@@ -118,7 +118,7 @@
                                             ON f.codcliente= cl.idcliente
                                             WHERE $where AND  f.estatus!=10 
                                             ORDER BY f.fecha DESC LIMIT $desde,$por_pagina");
-			mysqli_close($conection);
+
 
 			$result = mysqli_num_rows($query);
 			if($result > 0){
