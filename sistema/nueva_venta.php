@@ -36,11 +36,11 @@ include "../conexion.php";
                     <input type="text" name="nom_cliente" id="nom_cliente" disabled required>
                 </div>
                 <div class="wd30">
-                    <label for="telefono">Telefono</label>
+                    <label for="telefono">Teléfono</label>
                     <input type="number" name="tel_cliente" id="tel_cliente" disabled required>
                 </div>
                 <div class="wd100">
-                    <label for="direccion">Direccion</label>
+                    <label for="direccion">Dirección</label>
                     <input type="text" name="dir_cliente" id="dir_cliente" disabled required>
                 </div>
                 <div id="div_registro_cliente" class="wd100">

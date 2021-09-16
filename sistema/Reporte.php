@@ -29,8 +29,9 @@
         <button  type="submit" class="btn_view" target="_blank">Generar Reporte por Fecha</button>
         </form>
         <form >
-			<a href="reportegeneral.php" class="btn_view " target="_blank">Generar reporte general </a>
-            <a href="reportefacanulada.php" class="btn_view " target="_blank">Generar reporte facturas anuladas </a>
+			<a href="reportegeneral.php" class="btn_view " target="_blank">Generar Reporte General </a>
+            <a href="reportefacanulada.php" class="btn_view " target="_blank">Generar Reporte Facturas Anuladas </a>
+            <a href="reportefacturaactiva.php" class="btn_view " target="_blank">Generar Reporte Facturas Activas </a>
         </form>
         <br>
         </div>

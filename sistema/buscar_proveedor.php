@@ -57,7 +57,7 @@
 			$sql_registe = mysqli_query($conection,"SELECT COUNT(*) as total_registro FROM proveedor 
 																WHERE ( codproveedor LIKE '%$busqueda%' OR 
 																		proveedor LIKE '%$busqueda%' OR 
-																		cedula LIKE '%$busqueda%' OR
+																		ruc LIKE '%$busqueda%' OR
 																		contacto LIKE '%$busqueda%' OR 
 																		telefono LIKE '%$busqueda%' OR 
 																		direccion LIKE '%$busqueda%' 
@@ -83,7 +83,7 @@
 										WHERE 
 										( codproveedor LIKE '%$busqueda%' OR 
 											proveedor LIKE '%$busqueda%' OR 
-											cedula LIKE '%$busqueda%' OR 
+											ruc LIKE '%$busqueda%' OR 
 											contacto LIKE '%$busqueda%' OR 
 											telefono LIKE '%$busqueda%' OR 
 											direccion LIKE '%$busqueda%') 
@@ -99,7 +99,7 @@
 			?>
 				<tr>
 					<td><?php echo $data["codproveedor"]; ?></td>
-					<td><?php echo $data["cedula"]; ?></td>
+					<td><?php echo $data["ruc"]; ?></td>
 					<td><?php echo $data["proveedor"]; ?></td>				
 					<td><?php echo $data["contacto"]; ?></td>
 					<td><?php echo $data["telefono"]; ?></td>

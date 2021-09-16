@@ -1,2 +1,3 @@
 <?php
-    $conexion = mysqli_connect("localhost", "root", "", "facturacion");
+    $conexion = mysqli_connect("localhost", "root", "", "facinvconny");
+?>

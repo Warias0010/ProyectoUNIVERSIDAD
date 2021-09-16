@@ -11,13 +11,13 @@
 	if(!empty($_POST))
 	{
 		$alert='';
-		if(empty($_POST['cedula']) ||empty($_POST['proveedor']) ||empty($_POST['contacto']) || empty($_POST['telefono']) || empty($_POST['direccion']))
+		if(empty($_POST['ruc']) ||empty($_POST['proveedor']) ||empty($_POST['contacto']) || empty($_POST['telefono']) || empty($_POST['direccion']))
 		{
 			$alert='<p class="msg_error">Todos los campos son obligatorios.</p>';
 		}else{
 
 			$idproveedor = $_POST['id'];
-			$cedula  = $_POST['cedula'];
+			$ruc  = $_POST['ruc'];
 			$proveedor  = $_POST['proveedor'];
 			$contacto = $_POST['contacto'];
 			$telefono  = $_POST['telefono'];
@@ -26,7 +26,7 @@
 			
 	
 					$sql_update = mysqli_query($conection,"UPDATE proveedor
-															SET cedula = '$cedula' ,proveedor = '$proveedor', contacto='$contacto',telefono='$telefono',direccion='$direccion'
+															SET ruc = '$ruc' ,proveedor = '$proveedor', contacto='$contacto',telefono='$telefono',direccion='$direccion'
 															WHERE codproveedor= $idproveedor ");
 		
 
@@ -67,7 +67,7 @@
 			# code...
 			
 			$idproveedor  = $data['codproveedor'];
-			$cedula  =     $data['cedula'];
+			$ruc  =     $data['ruc'];
 			$proveedor  = $data['proveedor'];
 			$contacto  = $data['contacto'];
 			$telefono  = $data['telefono'];
@@ -106,7 +106,7 @@
     border: 0;
     cursor: pointer;
     margin: 7px auto;">RUC o Cedúla</label>
-				<input type="text" name="cedula" id="cedula" placeholder="" value = "<?php echo $cedula ?>" >
+				<input type="text" name="ruc" id="ruc" placeholder="" value = "<?php echo $ruc ?>" >
 
 				<label for="proveedor">Nombre del proveedor</label>
 				<input type="text" name="proveedor" id="proveedor" placeholder="Nombre del proveedor" value = "<?php echo $proveedor ?>" >

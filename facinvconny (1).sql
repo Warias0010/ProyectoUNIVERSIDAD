@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-09-2021 a las 04:30:52
+-- Tiempo de generación: 16-09-2021 a las 08:07:23
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 7.4.14
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `facturacion`
+-- Base de datos: `facinvconny`
 --
 
 DELIMITER $$
@@ -201,6 +201,7 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`idcliente`, `nit`, `nombre`, `telefono`, `direccion`, `dateadd`, `usuario_id`, `estatus`) VALUES
+(1, '1', 'Consumidor Final', 87992532, '', '2021-06-07 20:38:43', 24, 0),
 (49, '203-031191-1000T', 'Mario Alberto Arias Anton', 87992532, 'Granada,Gomper 1/2 C al oeste', '2021-06-07 20:38:43', 24, 0),
 (50, '203-031197-100T', '', 0, '', '2021-06-08 18:14:15', 24, 0),
 (51, '203-031197-100T', '', 0, '', '2021-06-08 18:14:16', 24, 0),
@@ -240,7 +241,6 @@ CREATE TABLE `detallefactura` (
 --
 
 INSERT INTO `detallefactura` (`correlativo`, `nofactura`, `codproducto`, `cantidad`, `precio_venta`) VALUES
-(0, 77, 19, 1, '55.04'),
 (39, 48, 18, 1, '8500.00'),
 (40, 49, 19, 2, '45.00'),
 (41, 50, 19, 2, '45.00'),
@@ -265,7 +265,15 @@ INSERT INTO `detallefactura` (`correlativo`, `nofactura`, `codproducto`, `cantid
 (62, 71, 18, 1, '8512.50'),
 (63, 72, 18, 1, '8112.19'),
 (64, 73, 30, 1, '7500.00'),
-(65, 74, 30, 1, '7500.00');
+(65, 74, 30, 1, '7500.00'),
+(66, 75, 27, 1, '17.39'),
+(67, 76, 19, 1, '55.04'),
+(68, 77, 19, 1, '55.04'),
+(69, 78, 19, 1, '55.04'),
+(70, 79, 19, 1, '55.04'),
+(71, 80, 19, 1, '55.04'),
+(72, 81, 19, 1, '55.04'),
+(73, 82, 19, 1, '55.04');
 
 -- --------------------------------------------------------
 
@@ -354,11 +362,7 @@ INSERT INTO `entradas` (`identrada`, `codproducto`, `fecha`, `cantidad`, `precio
 (80, 19, '2021-07-24 23:39:16', 5, '55.13', 24),
 (81, 19, '2021-07-24 23:39:50', 1, '55.00', 24),
 (82, 29, '2021-08-30 20:31:55', 9, '55.00', 24),
-(83, 30, '2021-08-31 22:18:54', 3, '7500.00', 24),
-(84, 18, '2021-09-12 22:12:13', 12, '8112.19', 24),
-(85, 31, '2021-09-14 22:51:52', 3, '6900.00', 24),
-(86, 32, '2021-09-14 23:16:46', 1, '32.00', 24),
-(87, 33, '2021-09-14 23:17:05', 12, '23.00', 24);
+(83, 30, '2021-08-31 22:18:54', 3, '7500.00', 24);
 
 -- --------------------------------------------------------
 
@@ -422,9 +426,14 @@ INSERT INTO `factura` (`nofactura`, `metodopago`, `fecha`, `usuario`, `codclient
 (72, 1, '2021-07-23 14:20:47', 24, 52, '8112.19', 1),
 (73, 1, '2021-08-31 22:19:47', 24, 60, '7500.00', 2),
 (74, 1, '2021-08-31 23:08:40', 26, 52, '7500.00', 2),
-(75, 1, '2021-09-04 21:32:18', 24, 52, '8112.19', 1),
-(76, 1, '2021-09-09 10:02:30', 24, 64, '7555.04', 2),
-(77, 1, '2021-09-10 10:56:49', 24, 64, '55.04', 2);
+(75, 1, '2021-09-15 21:46:04', 24, 53, '17.39', 1),
+(76, 1, '2021-09-15 22:15:08', 24, 64, '55.04', 2),
+(77, 1, '2021-09-15 22:18:05', 24, 64, '55.04', 2),
+(78, 1, '2021-09-15 23:11:20', 24, 64, '55.04', 1),
+(79, 1, '2021-09-15 23:26:01', 24, 1, '55.04', 1),
+(80, 1, '2021-09-15 23:30:38', 24, 1, '55.04', 1),
+(81, 1, '2021-09-15 23:31:10', 24, 1, '55.04', 1),
+(82, 1, '2021-09-15 23:33:04', 24, 1, '55.04', 1);
 
 -- --------------------------------------------------------
 
@@ -435,7 +444,7 @@ INSERT INTO `factura` (`nofactura`, `metodopago`, `fecha`, `usuario`, `codclient
 CREATE TABLE `producto` (
   `codproducto` int(11) NOT NULL,
   `descripcion` varchar(100) DEFAULT NULL,
-  `detalle` text NOT NULL,
+  `detalle` varchar(100) DEFAULT NULL,
   `proveedor` int(11) DEFAULT NULL,
   `categoria` int(11) NOT NULL,
   `precio` decimal(10,2) DEFAULT NULL,
@@ -450,20 +459,17 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`codproducto`, `descripcion`, `detalle`, `proveedor`, `categoria`, `precio`, `existencia`, `date_add`, `usuario_id`, `estatus`) VALUES
-(18, 'Pieza Trenza Acustico 2 sillones', 'Rojo decorativo ', 15, 1, '8112.19', 27, '2021-06-07 20:56:30', 24, 1),
-(19, 'Pieza Sevilla', 'Acado en madera natural', 15, 1, '55.04', 18, '2021-06-09 01:07:20', 24, 1),
-(20, 'Pieza Porta Vaso', 'Madera cedro Real, Color blanco', 15, 1, '173.53', 36, '2021-06-15 16:32:36', 24, 1),
-(23, 'lite0255', '', 15, 11, '22.00', 1, '2021-06-17 00:24:00', 24, 0),
-(24, 'maria 12', '', 15, 1, '555.00', 2, '2021-06-17 00:58:51', 24, 0),
-(25, 'Pieza Esquinero Americano', 'Madera acabado fino real', 15, 14, '9.13', 409, '2021-06-24 15:03:31', 24, 1),
-(26, 'Comedor tres pieza\r\n', '', 15, 11, '35.00', 25, '2021-07-01 13:21:04', 24, 0),
-(27, 'Comedor Premium', '', 15, 11, '17.39', 165, '2021-07-01 13:50:54', 24, 1),
-(28, 'sofa cama', '', 15, 1, '153.85', 13, '2021-07-09 13:05:30', 24, 0),
-(29, 'Test Prueba', '', 15, 1, '55.00', 9, '2021-08-30 20:31:55', 24, 1),
-(30, 'Pieza Clon Jalado', '', 15, 1, '7500.00', 3, '2021-08-31 22:18:54', 24, 1),
-(31, '4 sillas Madera ', '', 15, 11, '6900.00', 3, '2021-09-14 22:51:52', 24, 1),
-(32, '23', 'jspaspj', 15, 1, '32.00', 1, '2021-09-14 23:16:46', 24, 0),
-(33, 'testr', '0test', 15, 1, '23.00', 12, '2021-09-14 23:17:05', 24, 0);
+(18, 'Pieza Trenza Acustico 2 sillones', 'color caoba', 15, 1, '8112.19', 16, '2021-06-07 20:56:30', 24, 1),
+(19, 'Pieza Sevilla', 'color blanco', 15, 1, '55.04', 13, '2021-06-09 01:07:20', 24, 1),
+(20, 'Pieza Porta Vaso', 'Madera de cedro', 15, 1, '173.53', 36, '2021-06-15 16:32:36', 24, 1),
+(23, 'lite0255', NULL, 15, 11, '22.00', 1, '2021-06-17 00:24:00', 24, 0),
+(24, 'maria 12', NULL, 15, 1, '555.00', 2, '2021-06-17 00:58:51', 24, 0),
+(25, 'Pieza Esquinero Americano', 'Madera de abedul', 15, 14, '9.13', 409, '2021-06-24 15:03:31', 24, 1),
+(26, 'Comedor tres pieza\r\n', NULL, 15, 11, '35.00', 25, '2021-07-01 13:21:04', 24, 0),
+(27, 'Comedor Premium', 'color marrón', 15, 1, '17.39', 164, '2021-07-01 13:50:54', 24, 1),
+(28, 'sofa cama', NULL, 15, 1, '153.85', 13, '2021-07-09 13:05:30', 24, 0),
+(29, 'Test Prueba', 'color wengué', 15, 1, '55.00', 9, '2021-08-30 20:31:55', 24, 1),
+(30, 'Pieza Clon Jalado', 'color café', 15, 1, '7500.00', 3, '2021-08-31 22:18:54', 24, 1);
 
 --
 -- Disparadores `producto`
@@ -484,7 +490,7 @@ DELIMITER ;
 
 CREATE TABLE `proveedor` (
   `codproveedor` int(11) NOT NULL,
-  `cedula` text NOT NULL,
+  `ruc` varchar(100) DEFAULT NULL,
   `proveedor` varchar(100) DEFAULT NULL,
   `contacto` varchar(100) DEFAULT NULL,
   `telefono` bigint(11) DEFAULT NULL,
@@ -498,13 +504,12 @@ CREATE TABLE `proveedor` (
 -- Volcado de datos para la tabla `proveedor`
 --
 
-INSERT INTO `proveedor` (`codproveedor`, `cedula`, `proveedor`, `contacto`, `telefono`, `direccion`, `date_add`, `usuario_id`, `estatus`) VALUES
-(15, '2312121223PO', 'Mubleria Conny', 'Benlly Vilchez', 86577267, 'Managua, Mercado Oriental', '2021-06-07 20:40:50', 24, 1),
-(16, '12121212234K', 'Test024', 'FACINV', 555959595, 'Granada, Nicaragua', '2021-06-16 22:49:57', 24, 0),
-(17, '121212122F', 'Taller 2', 'Franchezco Vilches', 56546565, 'Managua', '2021-06-24 14:45:01', 24, 1),
-(18, '121213736233H', 'Prueba de proveedor', 'Benlly Vilchez02', 12345677, 'Granada, Nicaragua', '2021-07-25 00:51:00', 24, 1),
-(19, '1234567K', 'Testing056', 'FACINV', 12345678, 'Granada, Nicaragua', '2021-09-11 19:25:50', 25, 1),
-(20, '3455667688u', 'Test0240', 'FACINV8', 12345678, 'dsds', '2021-09-11 19:35:29', 25, 1);
+INSERT INTO `proveedor` (`codproveedor`, `ruc`, `proveedor`, `contacto`, `telefono`, `direccion`, `date_add`, `usuario_id`, `estatus`) VALUES
+(15, '304952BM', 'Mubleria Conny', 'Benlly Vilchez', 86577267, 'Managua, Mercado Oriental', '2021-06-07 20:40:50', 24, 1),
+(16, '729992F', 'Test024', 'FACINV', 555959595, 'Granada, Nicaragua', '2021-06-16 22:49:57', 24, 0),
+(17, '380264T', 'Taller 2', 'Franchezco Vilches', 56546565, 'Managua', '2021-06-24 14:45:01', 24, 1),
+(18, '529483P', 'Prueba de proveedor', 'Benlly Vilchez02', 12345677, 'Granada, Nicaragua', '2021-07-25 00:51:00', 24, 1),
+(19, '29399248N', 'Taller1', 'Bernardo', 71525139, 'Managua', '2021-09-12 12:01:00', 24, 1);
 
 -- --------------------------------------------------------
 
@@ -580,9 +585,9 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`idusuario`, `nombre`, `correo`, `usuario`, `clave`, `rol`, `estatus`) VALUES
 (24, 'Conny Robleto', 'Conny@gmail.com', 'Admin', 'e10adc3949ba59abbe56e057f20f883e', 1, 1),
-(25, 'María de los Ángeles López Leyton', 'antonwalter@gmail.con', 'Supervisor1', 'e10adc3949ba59abbe56e057f20f883e', 2, 1),
-(26, 'José Pavón', 'pavon@gmail.com', 'pavon2', 'e10adc3949ba59abbe56e057f20f883e', 3, 1),
-(27, 'Fabio Jose Maltez Flores', 'malezflores@gmail.com', 'Fabio15', 'e10adc3949ba59abbe56e057f20f883e', 2, 1);
+(25, 'María de los Ángeles López Leyton', 'antonwalter@gmail.con', 'Supervisor1', '3b712de48137572f3849aabd5666a4e3', 2, 1),
+(26, 'José Pavón', 'pavon@gmail.com', 'pavon2', '3b712de48137572f3849aabd5666a4e3', 3, 1),
+(27, 'Fabio Jose Maltez Flores', 'malezflores@gmail.com', 'Fabio15', '202cb962ac59075b964b07152d234b70', 2, 1);
 
 --
 -- Índices para tablas volcadas
@@ -699,16 +704,22 @@ ALTER TABLE `cliente`
   MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
+-- AUTO_INCREMENT de la tabla `detallefactura`
+--
+ALTER TABLE `detallefactura`
+  MODIFY `correlativo` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+
+--
 -- AUTO_INCREMENT de la tabla `detalle_temp`
 --
 ALTER TABLE `detalle_temp`
-  MODIFY `correlativo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=301;
+  MODIFY `correlativo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=306;
 
 --
 -- AUTO_INCREMENT de la tabla `entradas`
 --
 ALTER TABLE `entradas`
-  MODIFY `identrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `identrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT de la tabla `estado`
@@ -720,19 +731,19 @@ ALTER TABLE `estado`
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `nofactura` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `nofactura` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `codproducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `codproducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `codproveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `codproveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -767,54 +778,6 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `cliente`
   ADD CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`idusuario`);
-
---
--- Filtros para la tabla `detalle_temp`
---
-ALTER TABLE `detalle_temp`
-  ADD CONSTRAINT `detalle_temp_ibfk_2` FOREIGN KEY (`codproducto`) REFERENCES `producto` (`codproducto`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `entradas`
---
-ALTER TABLE `entradas`
-  ADD CONSTRAINT `entradas_ibfk_1` FOREIGN KEY (`codproducto`) REFERENCES `producto` (`codproducto`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `factura`
---
-ALTER TABLE `factura`
-  ADD CONSTRAINT `factura_ibfk_2` FOREIGN KEY (`codcliente`) REFERENCES `cliente` (`idcliente`),
-  ADD CONSTRAINT `factura_ibfk_3` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`idusuario`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `factura_ibfk_4` FOREIGN KEY (`metodopago`) REFERENCES `tipopago` (`Cod_Tipo_pago`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `producto`
---
-ALTER TABLE `producto`
-  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`proveedor`) REFERENCES `proveedor` (`codproveedor`),
-  ADD CONSTRAINT `producto_ibfk_2` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`idusuario`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `producto_ibfk_3` FOREIGN KEY (`categoria`) REFERENCES `categoria` (`cod_categoria`);
-
---
--- Filtros para la tabla `proveedor`
---
-ALTER TABLE `proveedor`
-  ADD CONSTRAINT `proveedor_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`idusuario`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `salida_producto`
---
-ALTER TABLE `salida_producto`
-  ADD CONSTRAINT `salida_producto_ibfk_1` FOREIGN KEY (`Id_usuario`) REFERENCES `usuario` (`idusuario`) ON DELETE CASCADE,
-  ADD CONSTRAINT `salida_producto_ibfk_2` FOREIGN KEY (`producto`) REFERENCES `producto` (`codproducto`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`rol`) REFERENCES `rol` (`idrol`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`estatus`) REFERENCES `estado` (`codestado`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
