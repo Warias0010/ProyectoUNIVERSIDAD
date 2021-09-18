@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-09-2021 a las 08:07:23
+-- Tiempo de generación: 18-09-2021 a las 09:25:15
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 7.4.14
 
@@ -220,7 +220,8 @@ INSERT INTO `cliente` (`idcliente`, `nit`, `nombre`, `telefono`, `direccion`, `d
 (64, '203-031191-1000T', 'Jose Adan Lopéz Rivas', 87992532, 'Managua, Mercado Oriental', '2021-07-22 11:13:04', 24, 1),
 (65, '203-031191-1000T', 's', 2147483647, 'Plaza Sésamo', '2021-07-22 11:13:29', 24, 0),
 (66, '203-031191-1000T', 'e', 2147483647, 'ew', '2021-07-22 11:21:56', 24, 0),
-(67, '203-110497-1000N', 'Pedro José Aguirre ', 123456789, 'Calzada ', '2021-07-22 11:28:13', 24, 1);
+(67, '203-110497-1000N', 'Pedro José Aguirre ', 123456789, 'Calzada ', '2021-07-22 11:28:13', 24, 1),
+(68, '203-031191-1000Ñ', 'FACINV', 25524838, 'Granada, Nicaragua', '2021-09-17 23:31:32', 24, 1);
 
 -- --------------------------------------------------------
 
@@ -273,7 +274,13 @@ INSERT INTO `detallefactura` (`correlativo`, `nofactura`, `codproducto`, `cantid
 (70, 79, 19, 1, '55.04'),
 (71, 80, 19, 1, '55.04'),
 (72, 81, 19, 1, '55.04'),
-(73, 82, 19, 1, '55.04');
+(73, 82, 19, 1, '55.04'),
+(74, 83, 19, 1, '55.04'),
+(75, 84, 19, 1, '55.04'),
+(76, 85, 19, 1, '55.04'),
+(77, 86, 19, 1, '55.04'),
+(78, 87, 19, 1, '55.04'),
+(79, 88, 19, 1, '55.04');
 
 -- --------------------------------------------------------
 
@@ -362,7 +369,8 @@ INSERT INTO `entradas` (`identrada`, `codproducto`, `fecha`, `cantidad`, `precio
 (80, 19, '2021-07-24 23:39:16', 5, '55.13', 24),
 (81, 19, '2021-07-24 23:39:50', 1, '55.00', 24),
 (82, 29, '2021-08-30 20:31:55', 9, '55.00', 24),
-(83, 30, '2021-08-31 22:18:54', 3, '7500.00', 24);
+(83, 30, '2021-08-31 22:18:54', 3, '7500.00', 24),
+(84, 31, '2021-09-16 23:09:28', 3, '7000.00', 24);
 
 -- --------------------------------------------------------
 
@@ -433,7 +441,13 @@ INSERT INTO `factura` (`nofactura`, `metodopago`, `fecha`, `usuario`, `codclient
 (79, 1, '2021-09-15 23:26:01', 24, 1, '55.04', 1),
 (80, 1, '2021-09-15 23:30:38', 24, 1, '55.04', 1),
 (81, 1, '2021-09-15 23:31:10', 24, 1, '55.04', 1),
-(82, 1, '2021-09-15 23:33:04', 24, 1, '55.04', 1);
+(82, 1, '2021-09-15 23:33:04', 24, 1, '55.04', 1),
+(83, 1, '2021-09-16 00:17:52', 24, 1, '55.04', 1),
+(84, 1, '2021-09-16 23:18:08', 26, 64, '55.04', 2),
+(85, 1, '2021-09-16 23:21:26', 24, 1, '55.04', 1),
+(86, 1, '2021-09-16 23:21:43', 24, 64, '55.04', 1),
+(87, 1, '2021-09-18 00:04:58', 24, 68, '55.04', 2),
+(88, 1, '2021-09-18 01:22:29', 28, 68, '55.04', 1);
 
 -- --------------------------------------------------------
 
@@ -460,7 +474,7 @@ CREATE TABLE `producto` (
 
 INSERT INTO `producto` (`codproducto`, `descripcion`, `detalle`, `proveedor`, `categoria`, `precio`, `existencia`, `date_add`, `usuario_id`, `estatus`) VALUES
 (18, 'Pieza Trenza Acustico 2 sillones', 'color caoba', 15, 1, '8112.19', 16, '2021-06-07 20:56:30', 24, 1),
-(19, 'Pieza Sevilla', 'color blanco', 15, 1, '55.04', 13, '2021-06-09 01:07:20', 24, 1),
+(19, 'Pieza Sevilla', 'color blanco', 15, 1, '55.04', 9, '2021-06-09 01:07:20', 24, 1),
 (20, 'Pieza Porta Vaso', 'Madera de cedro', 15, 1, '173.53', 36, '2021-06-15 16:32:36', 24, 1),
 (23, 'lite0255', NULL, 15, 11, '22.00', 1, '2021-06-17 00:24:00', 24, 0),
 (24, 'maria 12', NULL, 15, 1, '555.00', 2, '2021-06-17 00:58:51', 24, 0),
@@ -469,7 +483,8 @@ INSERT INTO `producto` (`codproducto`, `descripcion`, `detalle`, `proveedor`, `c
 (27, 'Comedor Premium', 'color marrón', 15, 1, '17.39', 164, '2021-07-01 13:50:54', 24, 1),
 (28, 'sofa cama', NULL, 15, 1, '153.85', 13, '2021-07-09 13:05:30', 24, 0),
 (29, 'Test Prueba', 'color wengué', 15, 1, '55.00', 9, '2021-08-30 20:31:55', 24, 1),
-(30, 'Pieza Clon Jalado', 'color café', 15, 1, '7500.00', 3, '2021-08-31 22:18:54', 24, 1);
+(30, 'Pieza Clon Jalado', 'color café', 15, 1, '7500.00', 3, '2021-08-31 22:18:54', 24, 1),
+(31, 'Test12', 'Prueba', 15, 1, '7000.00', 3, '2021-09-16 23:09:28', 24, 1);
 
 --
 -- Disparadores `producto`
@@ -509,7 +524,9 @@ INSERT INTO `proveedor` (`codproveedor`, `ruc`, `proveedor`, `contacto`, `telefo
 (16, '729992F', 'Test024', 'FACINV', 555959595, 'Granada, Nicaragua', '2021-06-16 22:49:57', 24, 0),
 (17, '380264T', 'Taller 2', 'Franchezco Vilches', 56546565, 'Managua', '2021-06-24 14:45:01', 24, 1),
 (18, '529483P', 'Prueba de proveedor', 'Benlly Vilchez02', 12345677, 'Granada, Nicaragua', '2021-07-25 00:51:00', 24, 1),
-(19, '29399248N', 'Taller1', 'Bernardo', 71525139, 'Managua', '2021-09-12 12:01:00', 24, 1);
+(19, '29399248N', 'Taller1', 'Bernardo', 71525139, 'Managua', '2021-09-12 12:01:00', 24, 1),
+(20, '304952BM', 'FACINV', 'FACINV', 87992532, 'Granada, Nicaragua', '2021-09-17 23:51:35', 24, 1),
+(21, '304923FAC', 'FACINV1', 'FACINV1', 87992532, 'Granada, Nicaragua', '2021-09-18 01:18:13', 24, 0);
 
 -- --------------------------------------------------------
 
@@ -585,9 +602,10 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`idusuario`, `nombre`, `correo`, `usuario`, `clave`, `rol`, `estatus`) VALUES
 (24, 'Conny Robleto', 'Conny@gmail.com', 'Admin', 'e10adc3949ba59abbe56e057f20f883e', 1, 1),
-(25, 'María de los Ángeles López Leyton', 'antonwalter@gmail.con', 'Supervisor1', '3b712de48137572f3849aabd5666a4e3', 2, 1),
-(26, 'José Pavón', 'pavon@gmail.com', 'pavon2', '3b712de48137572f3849aabd5666a4e3', 3, 1),
-(27, 'Fabio Jose Maltez Flores', 'malezflores@gmail.com', 'Fabio15', '202cb962ac59075b964b07152d234b70', 2, 1);
+(25, 'María López Leyton', 'antonwalter@gmail.con', 'Supervisor1', 'e10adc3949ba59abbe56e057f20f883e', 2, 1),
+(26, 'José Pavón', 'pavon@gmail.com', 'pavon2', 'e10adc3949ba59abbe56e057f20f883e', 3, 1),
+(27, 'Fabio Jose Maltez Flores', 'malezflores@gmail.com', 'Fabio15', '202cb962ac59075b964b07152d234b70', 2, 1),
+(28, 'FACINV', 'DEV@FACINV.COM.NI', 'TestUSer', 'e10adc3949ba59abbe56e057f20f883e', 3, 1);
 
 --
 -- Índices para tablas volcadas
@@ -701,25 +719,25 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT de la tabla `detallefactura`
 --
 ALTER TABLE `detallefactura`
-  MODIFY `correlativo` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `correlativo` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_temp`
 --
 ALTER TABLE `detalle_temp`
-  MODIFY `correlativo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=306;
+  MODIFY `correlativo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=312;
 
 --
 -- AUTO_INCREMENT de la tabla `entradas`
 --
 ALTER TABLE `entradas`
-  MODIFY `identrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `identrada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT de la tabla `estado`
@@ -731,19 +749,19 @@ ALTER TABLE `estado`
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `nofactura` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `nofactura` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `codproducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `codproducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `codproveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `codproveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
@@ -767,7 +785,7 @@ ALTER TABLE `tipopago`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Restricciones para tablas volcadas
